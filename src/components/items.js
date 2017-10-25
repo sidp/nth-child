@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { green, lightGray } from '../utils/styles';
+
 export default function Items({ numberOfItems, pattern }) {
 	const items = Array.apply(null, { length: numberOfItems }).map((item, i) => (
 		<li key={i} />
@@ -11,7 +13,7 @@ export default function Items({ numberOfItems, pattern }) {
 
 const StyledOrderedList = styled.ol`
 	li {
-		background-color: #eee;
+		background-color: ${lightGray};
 	}
 
 	li + li {
@@ -19,6 +21,6 @@ const StyledOrderedList = styled.ol`
 	}
 
 	li:nth-child(${props => props.pattern}) {
-		background-color: #4d1;
+		background-color: ${green};
 	}
 `;

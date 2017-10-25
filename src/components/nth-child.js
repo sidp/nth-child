@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import NumberInput from './number-input';
 import Items from './items';
 
+import { blue, gray } from '../utils/styles';
+
 export default class NthChild extends Component {
 	state = {
 		pattern: '2n+1',
@@ -45,7 +47,7 @@ export default class NthChild extends Component {
 const Control = styled.p`
 	font-size: 1.3em;
 	font-family: monospace;
-	color: #666;
+	color: ${gray};
 `;
 
 const StyledNumberInput = styled(NumberInput)`
@@ -59,4 +61,15 @@ const StyledNumberInput = styled(NumberInput)`
 	font-family: inherit;
 	text-align: center;
 	width: 4.5em;
+	line-height: 1.6;
+	border-radius: 3px;
+
+	&:hover {
+		box-shadow: inset 0 0 0 2px color(${blue} a(10%));
+	}
+
+	&:focus {
+		outline: 0;
+		box-shadow: inset 0 0 0 2px ${blue};
+	}
 `;
