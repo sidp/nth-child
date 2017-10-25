@@ -34,6 +34,7 @@ export default class NthChild extends Component {
 						type="text"
 						defaultValue={this.state.pattern}
 						onChange={this.setInput}
+						tabIndex="1"
 					/>
 					)
 				</Control>
