@@ -1,0 +1,16 @@
+{
+  "name": "nth-child",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "develop": "gatsby develop"
+  },
+  "dependencies": {
+    "gatsby": "^1.9.18",
+    "gatsby-link": "^1.6.15",
+    "gatsby-plugin-styled-components": "^1.0.5"
+  }
+}
