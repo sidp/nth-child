@@ -18,6 +18,16 @@ export default function Index() {
 				</a>.
 			</p>
 			<NthChild />
+			<Byline>
+				<a
+					href="https://twitter.com/sidp"
+					target="_blank"
+					rel="noopener"
+					tabIndex="3"
+				>
+					@sidp
+				</a>
+			</Byline>
 		</div>
 	);
 }
@@ -25,4 +35,9 @@ export default function Index() {
 const Heading = styled.h1`
 	font-size: 1.4em;
 	margin: 0.33em 0;
+`;
+
+const Byline = styled.p`
+	font-size: 0.8rem;
+	text-align: right;
 `;
