@@ -1,6 +1,14 @@
 module.exports = {
 	siteMetadata: {
-		title: 'react-styled-components-training',
+		title: 'nth-child',
 	},
-	plugins: ['gatsby-plugin-styled-components'],
+	plugins: [
+		'gatsby-plugin-styled-components',
+		{
+			resolve: 'gatsby-plugin-google-analytics',
+			options: {
+				trackingId: 'UA-60527-12',
+			},
+		},
+	],
 };
