@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+
+import NumberInput from './number-input';
 import Items from './items';
 
 export default class NthChild extends Component {
@@ -24,10 +26,10 @@ export default class NthChild extends Component {
 	render() {
 		return (
 			<div>
-				:nth-child (
-				<Input
+				:nth-child(
+				<StyledNumberInput
 					type="text"
-					value={this.state.pattern}
+					defaultValue={this.state.pattern}
 					onChange={this.setInput}
 				/>
 				)
@@ -37,7 +39,7 @@ export default class NthChild extends Component {
 	}
 }
 
-const Input = styled.input`
+const StyledNumberInput = styled(NumberInput)`
 	font-size: 1em;
 	border: 0;
 	padding: 0;
