@@ -26,6 +26,7 @@ export default function Html({ headComponents, body, postBodyComponents }) {
 				<meta charSet="utf-8" />
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<title>How to use nth-child</title>
 				{headComponents}
 				{css}
 			</head>
