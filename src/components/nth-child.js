@@ -26,24 +26,37 @@ export default class NthChild extends Component {
 	render() {
 		return (
 			<div>
-				:nth-child(
-				<StyledNumberInput
-					type="text"
-					defaultValue={this.state.pattern}
-					onChange={this.setInput}
-				/>
-				)
+				<Control>
+					:nth-child(
+					<StyledNumberInput
+						type="text"
+						defaultValue={this.state.pattern}
+						onChange={this.setInput}
+					/>
+					)
+				</Control>
+
 				<Items numberOfItems={20} pattern={this.state.pattern} />
 			</div>
 		);
 	}
 }
 
+const Control = styled.p`
+	font-size: 1.3em;
+	font-family: monospace;
+	color: #666;
+`;
+
 const StyledNumberInput = styled(NumberInput)`
-	font-size: 1em;
 	border: 0;
 	padding: 0;
 	display: inline-block;
 	background-color: transparent;
 	appearance: none;
+	color: #000;
+	font-size: 1em;
+	font-family: inherit;
+	text-align: center;
+	width: 4.5em;
 `;

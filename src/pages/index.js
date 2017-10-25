@@ -1,12 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import NthChild from '../components/nth-child';
 
 export default function Index() {
 	return (
 		<div>
-			<h1>The :nth-child() CSS pseudo-class</h1>
+			<Heading>:nth-child() CSS pseudo-class</Heading>
 			<p>
-				Enter your selector pattern below. Read all about it on{' '}
+				Enter your selector pattern below. Read more about it on{' '}
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"
 					target="_blank"
@@ -19,3 +20,8 @@ export default function Index() {
 		</div>
 	);
 }
+
+const Heading = styled.h1`
+	font-size: 1.4em;
+	margin: 0.33em 0;
+`;

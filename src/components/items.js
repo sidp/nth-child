@@ -19,6 +19,6 @@ const StyledOrderedList = styled.ol`
 	}
 
 	li:nth-child(${props => props.pattern}) {
-		background-color: #4f2;
+		background-color: #4d1;
 	}
 `;
