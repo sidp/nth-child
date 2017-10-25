@@ -6,7 +6,9 @@
 	"scripts": {
 		"build": "gatsby build",
 		"serve": "gatsby serve",
-		"develop": "gatsby develop"
+		"develop": "gatsby develop",
+		"deploy":
+			"yarn run build && rsync -avz --del public/ peter@simonsson.com:/var/www/nth-child.design"
 	},
 	"dependencies": {
 		"gatsby": "^1.9.18",
