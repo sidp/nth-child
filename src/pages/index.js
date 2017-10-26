@@ -7,7 +7,9 @@ export default function Index() {
 		<div>
 			<Heading>:nth-child() CSS pseudo-class</Heading>
 			<p>
-				Enter your selector pattern below. Read more about it on{' '}
+				The patterns of :nth-child() can sometimes be tricky to understand. Edit
+				the selector pattern below to see how the selected elements change. Read
+				about how it works on{' '}
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"
 					target="_blank"
