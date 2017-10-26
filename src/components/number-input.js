@@ -7,7 +7,7 @@ import { numberAt, getNumberAt, changeNumberAt } from '../utils/numbers';
  */
 
 export default class NumberInput extends Component {
-	defaultProps = { onChange: () => {} };
+	static defaultProps = { onChange: () => {} };
 
 	handleKeyDown = ev => {
 		// Return early if it's not a up or down keypress
