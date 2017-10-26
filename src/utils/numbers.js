@@ -63,7 +63,8 @@ function replaceNumber(str, pos, oldValue, newValue) {
 
 export function changeNumberAt(str, pos, increment = 0) {
 	const number = getNearNumber(str, pos);
-	const newValue = number.value + increment;
+	const newValue = Math.max(0, number.value + increment);
+
 	return {
 		...number,
 		str: replaceNumber(str, number.startIndex, number.value, newValue),
