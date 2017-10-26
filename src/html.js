@@ -32,6 +32,11 @@ export default function Html({ headComponents, body, postBodyComponents }) {
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<title>How to use nth-child</title>
+				<link
+					rel="icon"
+					type="image/x-icon"
+					href={require('./assets/images/favicon.ico')}
+				/>
 				<meta name="description" content={description} />
 				<meta property="og:title" content={title} />
 				<meta
