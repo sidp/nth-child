@@ -12,7 +12,7 @@ injectGlobal`
 		font-size: 1.2rem;
 		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 		line-height: 1.4;
-		max-width: 40em;
+		max-width: 38em;
 		margin: 0 auto;
 		padding: 0.25em 0.5em;
 

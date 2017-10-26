@@ -64,9 +64,10 @@ const StyledNumberInput = styled(NumberInput)`
 	width: 4.5em;
 	line-height: 1.6;
 	border-radius: 3px;
+	box-shadow: inset 0 0 0 2px #edf1f5;
 
 	&:hover {
-		box-shadow: inset 0 0 0 2px color(${blue} a(10%));
+		box-shadow: inset 0 0 0 2px #e1e7ed;
 	}
 
 	&:focus {
