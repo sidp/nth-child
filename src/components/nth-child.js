@@ -13,16 +13,8 @@ export default class NthChild extends Component {
 
 	static defaultProps = {};
 
-	setInput = arg => {
-		const pattern =
-			typeof arg === 'string'
-				? arg
-				: typeof arg === 'object' && arg.target ? arg.target.value : null;
-		if (typeof pattern === 'string') {
-			this.setState(() => ({
-				pattern,
-			}));
-		}
+	handleOnChange = (pattern, callback = () => {}) => {
+		this.setState(() => ({ pattern }), callback);
 	};
 
 	render() {
@@ -32,8 +24,8 @@ export default class NthChild extends Component {
 					:nth-child(
 					<StyledNumberInput
 						type="text"
-						defaultValue={this.state.pattern}
-						onChange={this.setInput}
+						value={this.state.pattern}
+						onChange={this.handleOnChange}
 						tabIndex="1"
 					/>
 					)
