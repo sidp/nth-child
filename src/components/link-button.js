@@ -36,5 +36,7 @@ const PlainButton = styled.button`
 	cursor: pointer;
 	background: transparent;
 	border: 0;
+	padding: 0;
+	margin: 0;
 	appearance: none;
 `;

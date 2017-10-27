@@ -5,7 +5,14 @@ import NumberInput from './number-input';
 import Items from './items';
 import LinkButton from './link-button';
 
-import { blue, gray, lightGray, lightGrayShade } from '../utils/styles';
+import {
+	blue,
+	gray,
+	lightGray,
+	shadedLightGray,
+	selectedElement,
+	highlightedSelectedElement,
+} from '../utils/styles';
 
 const DEFAULT_PATTERN = '2n+1';
 // Characters that are not useful in a nth-child pattern
@@ -41,6 +48,7 @@ export default class NthChild extends Component {
 	state = {
 		pattern: DEFAULT_PATTERN,
 		patternInUrl: false,
+		highlightSelected: false,
 	};
 
 	static defaultProps = {};
@@ -93,21 +101,38 @@ export default class NthChild extends Component {
 		history.replaceState(undefined, undefined, hash);
 	};
 
+	handleMouseEnterSelectedBlockExample = () => {
+		this.setState(() => ({
+			highlightSelected: true,
+		}));
+	};
+
+	handleMouseLeaveSelectedBlockExample = () => {
+		this.setState(() => ({
+			highlightSelected: false,
+		}));
+	};
+
 	render() {
 		return (
 			<div>
 				<Control>
-					:nth-child(
-					<StyledNumberInput
-						type="text"
-						value={this.state.pattern}
-						onChange={this.handleOnChange}
-						tabIndex="1"
-					/>
-					)
+					<label>
+						:nth-child(
+						<StyledNumberInput
+							type="text"
+							value={this.state.pattern}
+							onChange={this.handleOnChange}
+							tabIndex="1"
+						/>
+						)
+					</label>
 					<CssBlock>
-						{'{'}
-						<Ellipsis>…</Ellipsis>
+						{' {'}
+						<SelectedBlockExample
+							onMouseEnter={this.handleMouseEnterSelectedBlockExample}
+							onMouseLeave={this.handleMouseLeaveSelectedBlockExample}
+						/>
 						{'}'}
 					</CssBlock>
 					{!this.state.patternInUrl && (
@@ -116,15 +141,20 @@ export default class NthChild extends Component {
 						</StyledLinkButton>
 					)}
 				</Control>
-				<Items numberOfItems={20} pattern={this.state.pattern} />
+				<Items
+					numberOfItems={20}
+					pattern={this.state.pattern}
+					highlightSelected={this.state.highlightSelected}
+				/>
 			</div>
 		);
 	}
 }
 
 const Control = styled.p`
-	font-size: 1.3em;
-	font-family: monospace;
+	font-size: 1.05em;
+	font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
+		monospace;
 	color: ${gray};
 `;
 
@@ -144,7 +174,7 @@ const StyledNumberInput = styled(NumberInput)`
 	box-shadow: inset 0 0 0 2px ${lightGray};
 
 	&:hover {
-		box-shadow: inset 0 0 0 2px ${lightGrayShade};
+		box-shadow: inset 0 0 0 2px ${shadedLightGray};
 	}
 
 	&:focus {
@@ -154,6 +184,20 @@ const StyledNumberInput = styled(NumberInput)`
 `;
 
 const CssBlock = styled.span`@media (max-width: 350px) {display: none;}`;
-const Ellipsis = styled.span`color: ${lightGrayShade};`;
+const SelectedBlockExample = styled.span`
+	display: inline-block;
+	width: 0.6em;
+	height: 0.6em;
+	margin-left: 2px;
+	margin-right: 2px;
+	${selectedElement};
 
-const StyledLinkButton = styled(LinkButton)`float: right;`;
+	&:hover {
+		${highlightedSelectedElement};
+	}
+`;
+
+const StyledLinkButton = styled(LinkButton)`
+	float: right;
+	margin-top: 4px;
+`;
