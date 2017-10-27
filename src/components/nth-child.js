@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import NumberInput from './number-input';
 import Items from './items';
+import LinkButton from './link-button';
 
 import { blue, gray, lightGray, lightGrayShade } from '../utils/styles';
 
@@ -103,13 +104,16 @@ export default class NthChild extends Component {
 						onChange={this.handleOnChange}
 						tabIndex="1"
 					/>
-					) {'{'}
-					<Ellipsis>…</Ellipsis>
-					{'}'}
+					)
+					<CssBlock>
+						{'{'}
+						<Ellipsis>…</Ellipsis>
+						{'}'}
+					</CssBlock>
 					{!this.state.patternInUrl && (
-						<button onClick={this.setPatternInUrl}>
-							make url for this pattern
-						</button>
+						<StyledLinkButton tabIndex="2" onClick={this.setPatternInUrl}>
+							Make an URL for this pattern
+						</StyledLinkButton>
 					)}
 				</Control>
 				<Items numberOfItems={20} pattern={this.state.pattern} />
@@ -149,4 +153,7 @@ const StyledNumberInput = styled(NumberInput)`
 	}
 `;
 
-const Ellipsis = styled.span`color: #e1e7ed;`;
+const CssBlock = styled.span`@media (max-width: 350px) {display: none;}`;
+const Ellipsis = styled.span`color: ${lightGrayShade};`;
+
+const StyledLinkButton = styled(LinkButton)`float: right;`;

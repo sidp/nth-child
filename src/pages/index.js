@@ -14,7 +14,7 @@ export default function Index() {
 					href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"
 					target="_blank"
 					rel="noopener"
-					tabIndex="2"
+					tabIndex="10"
 				>
 					MDN
 				</a>.
@@ -25,7 +25,7 @@ export default function Index() {
 					href="https://twitter.com/sidp"
 					target="_blank"
 					rel="noopener"
-					tabIndex="3"
+					tabIndex="11"
 				>
 					@sidp
 				</a>
