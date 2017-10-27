@@ -8,6 +8,12 @@ export default function Layout(props) {
 }
 
 injectGlobal`
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
 	body {
 		font-size: 1.2rem;
 		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
