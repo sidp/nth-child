@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import NumberInput from './number-input';
 import Items from './items';
 
-import { blue, gray } from '../utils/styles';
+import { blue, gray, lightGray, lightGrayShade } from '../utils/styles';
 
 const DEFAULT_PATTERN = '2n+1';
 // Characters that are not useful in a nth-child pattern
@@ -112,7 +112,6 @@ export default class NthChild extends Component {
 						</button>
 					)}
 				</Control>
-
 				<Items numberOfItems={20} pattern={this.state.pattern} />
 			</div>
 		);
@@ -138,10 +137,10 @@ const StyledNumberInput = styled(NumberInput)`
 	width: 4.5em;
 	line-height: 1.6;
 	border-radius: 3px;
-	box-shadow: inset 0 0 0 2px #edf1f5;
+	box-shadow: inset 0 0 0 2px ${lightGray};
 
 	&:hover {
-		box-shadow: inset 0 0 0 2px #e1e7ed;
+		box-shadow: inset 0 0 0 2px ${lightGrayShade};
 	}
 
 	&:focus {
