@@ -11,6 +11,7 @@ import {
 	gray,
 	lightGray,
 	shadedLightGray,
+	lightYellow,
 	selectedElement,
 	highlightedSelectedElement,
 } from '../utils/styles';
@@ -26,6 +27,10 @@ function allowedPattern(pattern) {
 
 function cleanPattern(pattern) {
 	return pattern.replace(INVALID_CHARS_REGEX, '');
+}
+
+function patternIncludesOf(pattern) {
+	return pattern.indexOf('of') !== -1;
 }
 
 function getPatternFromLocation() {
@@ -140,10 +145,19 @@ export default class NthChild extends Component {
 					</CssBlock>
 					{!this.state.patternInUrl && (
 						<StyledLinkButton tabIndex="2" onClick={this.setPatternInUrl}>
-							Make an URL for this pattern
+							Make a URL for this pattern
 						</StyledLinkButton>
 					)}
 				</Control>
+				{patternIncludesOf(this.state.pattern) && (
+					<Notice>
+						<p>
+							Good try, but unfortunately this thing can’t show patterns using
+							the "<code>{'of <selector>'}</code>" syntax. Life is tough on the
+							cutting edge… 🔪
+						</p>
+					</Notice>
+				)}
 				<Items
 					numberOfItems={20}
 					pattern={this.state.pattern}
@@ -202,4 +216,17 @@ const SelectedBlockExample = styled.span`
 const StyledLinkButton = styled(LinkButton)`
 	float: right;
 	margin-top: 4px;
+`;
+
+const Notice = styled.div`
+	background-color: ${lightYellow};
+	padding: 0.66em 1em 0.75em;
+
+	p:first-child {
+		margin-top: 0;
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
 `;

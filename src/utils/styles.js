@@ -12,6 +12,7 @@ export const darkBlue = '#013a7a';
 export const gray = '#929fad';
 export const lightGray = '#edf2f7';
 export const shadedLightGray = '#e1e7ed';
+export const lightYellow = '#fff7d1';
 
 export const selectedElement = css`background-color: ${green};`;
 
