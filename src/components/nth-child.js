@@ -14,7 +14,7 @@ import {
 	highlightedSelectedElement,
 } from '../utils/styles';
 
-const DEFAULT_PATTERN = '2n+1';
+const DEFAULT_PATTERN = '3n+1';
 // Characters that are not useful in a nth-child pattern
 const INVALID_CHARS_REGEX = /[\(\)\\\/\<\%\€\$]/g;
 
