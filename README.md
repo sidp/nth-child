@@ -1,11 +1,11 @@
-# React styled-components training package
+# nth-child.design
 
-This is a small setup of Gatsby and styled-components to use as a starting point.
+This is the source for [nth-child.design](https://nth-child.design).
 
-## Step 1
+## Local development
 Clone the repo and then run
 ```sh
-$ npm install
-$ npm run develop
+$ yarn install
+$ yarn develop
 ```
 and go to http://localhost:8000/
