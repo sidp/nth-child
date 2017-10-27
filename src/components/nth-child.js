@@ -44,10 +44,12 @@ function getPatternFromLocation() {
 	return false;
 }
 
+const PATTERN_FROM_LOCATION = getPatternFromLocation();
+
 export default class NthChild extends Component {
 	state = {
-		pattern: DEFAULT_PATTERN,
-		patternInUrl: false,
+		pattern: PATTERN_FROM_LOCATION || DEFAULT_PATTERN,
+		patternInUrl: !!PATTERN_FROM_LOCATION,
 		highlightSelected: false,
 	};
 
