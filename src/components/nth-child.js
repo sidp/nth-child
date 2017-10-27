@@ -6,6 +6,7 @@ import Items from './items';
 import LinkButton from './link-button';
 
 import {
+	fontMono,
 	blue,
 	gray,
 	lightGray,
@@ -155,8 +156,7 @@ export default class NthChild extends Component {
 
 const Control = styled.p`
 	font-size: 1.05em;
-	font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
-		monospace;
+	font-family: ${fontMono};
 	color: ${gray};
 `;
 

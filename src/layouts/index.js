@@ -1,7 +1,7 @@
 import React from 'react';
 import { injectGlobal } from 'styled-components';
 
-import { blue, darkBlue } from '../utils/styles';
+import { font, fontMono, blue, darkBlue } from '../utils/styles';
 
 export default function Layout(props) {
 	return <div>{props.children()}</div>;
@@ -16,7 +16,7 @@ injectGlobal`
 
 	body {
 		font-size: 1.2rem;
-		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+		font-family: ${font};
 		line-height: 1.4;
 		max-width: 35em;
 		margin: 0 auto;
@@ -33,5 +33,9 @@ injectGlobal`
 
 	a:active {
 		color: ${darkBlue};
+	}
+
+	code {
+		font-family: ${fontMono};
 	}
 `;

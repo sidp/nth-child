@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
 
+export const font =
+	'-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+export const fontMono =
+	'"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace';
+
 export const green = '#37dc66';
 export const shadedGreen = '#34d562';
 export const blue = '#2383ef';
