@@ -2,10 +2,10 @@ module.exports = {
 	siteMetadata: {
 		title: 'nth-child',
 		hostname: 'https://nth-child.design',
-		pathPrefix: '',
 	},
 	plugins: [
 		'gatsby-plugin-styled-components',
+		'gatsby-plugin-react-next',
 		{
 			resolve: 'gatsby-plugin-google-analytics',
 			options: {
