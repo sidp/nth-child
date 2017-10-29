@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { numberAt, getNumberAt, changeNumberAt } from '../utils/numbers';
+import { hasNumberAt, getNumberAt, changeNumberAt } from '../utils/numbers';
 
 export default class NumberInput extends Component {
 	static defaultProps = {
@@ -20,7 +20,7 @@ export default class NumberInput extends Component {
 			ev.preventDefault();
 
 			// Return early if there's no number at the cursor
-			if (!numberAt(value, selectionStart)) {
+			if (!hasNumberAt(value, selectionStart)) {
 				return;
 			}
 

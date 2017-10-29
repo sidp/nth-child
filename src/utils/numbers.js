@@ -4,25 +4,19 @@
  */
 
 /**
- * Check if there's a number at or before a certain position in a string.
+ * Quick check if there's a number at a certain position in a string.
  */
-export function numberAt(str = '', pos = 0) {
-	let numberAt = str[pos] || false;
-	let numberBefore = pos > 0 ? str[pos - 1] || false : false;
-
-	numberAt = typeof numberAt === 'string' ? numberAt.match(/[0-9]/) : false;
-	numberBefore =
-		typeof numberBefore === 'string' ? numberBefore.match(/[0-9]/) : false;
-
-	return numberAt || numberBefore;
+export function hasNumberAt(str = '', pos = 0) {
+	const sample = str.slice(Math.max(0, pos - 1), pos + 1);
+	return sample.match(/[0-9]/) !== null;
 }
 
 /**
  * Get the number near a certain position in a string. Returns false if
  * no number is near the position.
  */
-function getNearNumber(str, pos) {
-	if (!numberAt(str, pos)) {
+function getNumberAt(str, pos) {
+	if (!hasNumberAt(str, pos)) {
 		return false;
 	}
 
@@ -62,7 +56,7 @@ function replaceNumber(str, pos, oldValue, newValue) {
  */
 
 export function changeNumberAt(str, pos, increment = 0) {
-	const number = getNearNumber(str, pos);
+	const number = getNumberAt(str, pos);
 	const newValue = Math.max(0, number.value + increment);
 
 	return {
