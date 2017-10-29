@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { numberAt, getNumberAt, changeNumberAt } from '../utils/numbers';
 
 export default class NumberInput extends Component {
-	static defaultProps = { value: '', onChange: (value, callback) => {} };
+	static defaultProps = {
+		value: '',
+		onChange: (value, callback) => {},
+	};
 
 	handleKeyDown = ev => {
 		// When up or down is pressed
@@ -33,6 +36,12 @@ export default class NumberInput extends Component {
 
 			let changed = changeNumberAt(value, selectionStart, increment);
 
+			/**
+			 * TODO: This relies on the parent component firing the callback
+			 * provided back when calling the onChange property function, for
+			 * selecting the changed number in the text field. It shouldn't
+			 * have to rely on it's parent component for this.
+			 */
 			ev.persist(); // keep event around for use in callback
 			this.props.onChange(changed.str, () => {
 				ev.target.setSelectionRange(changed.startIndex, changed.endIndex);
@@ -45,7 +54,11 @@ export default class NumberInput extends Component {
 	};
 
 	render() {
-		const { onChange, ...props } = this.props; // Don't pass the onChange prop to input
+		/**
+		 * Don't pass the onChange prop to input, because we’re
+		 * overwriting it with our own.
+		 */
+		const { onChange, ...props } = this.props;
 		return (
 			<input
 				{...props}
