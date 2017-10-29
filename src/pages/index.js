@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NthChild from '../components/nth-child';
+import { lightGray } from '../utils/styles';
 
 export default function Index() {
 	return (
@@ -20,16 +21,23 @@ export default function Index() {
 				</a>.
 			</p>
 			<NthChild />
-			<Byline>
-				<a
-					href="https://twitter.com/sidp"
-					target="_blank"
-					rel="noopener"
-					tabIndex="11"
-				>
-					@sidp
-				</a>
-			</Byline>
+			<Footer>
+				<Source>
+					Source code on{' '}
+					<a
+						href="https://github.com/sidp/nth-child"
+						target="_blank"
+						rel="noopener"
+					>
+						GitHub
+					</a>
+				</Source>
+				<Byline>
+					<a href="https://twitter.com/sidp" target="_blank" rel="noopener">
+						@sidp
+					</a>
+				</Byline>
+			</Footer>
 		</div>
 	);
 }
@@ -39,7 +47,19 @@ const Heading = styled.h1`
 	margin: 0.33em 0;
 `;
 
-const Byline = styled.p`
+const Footer = styled.p`
 	font-size: 0.8rem;
-	text-align: right;
+	border-top: 2px solid ${lightGray};
+	margin-top: 2.25rem;
+	padding-top: 0.75rem;
+
+	&::after {
+		content: '';
+		clear: both;
+		display: table;
+	}
 `;
+
+const Source = styled.span`float: left;`;
+
+const Byline = styled.span`float: right;`;
