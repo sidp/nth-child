@@ -24,16 +24,21 @@ export default function Items({
 
 	const cleanedPattern = cleanPattern(pattern);
 	return (
-		<StyledOrderedList
+		<NthChildList
 			pattern={cleanedPattern}
 			highlightSelected={highlightSelected}
 		>
 			{items}
-		</StyledOrderedList>
+		</NthChildList>
 	);
 }
 
-const StyledOrderedList = styled.ol`
+/**
+ * The use of :nth-child and props below generates a new css class each time
+ * the prop is changed to something new. This can cause the styles to grow
+ * very large.
+ */
+const NthChildList = styled.ol`
 	li {
 		background-color: ${lightGray};
 	}
