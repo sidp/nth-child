@@ -18,9 +18,9 @@ export default function Items({
 	pattern = '',
 	highlightSelected = false,
 }) {
-	const items = Array.apply(null, { length: numberOfItems }).map((item, i) => (
-		<li key={i} />
-	));
+	const items = Array.apply(null, { length: numberOfItems }).map(
+		(item, i) => <li key={i} />
+	);
 
 	const cleanedPattern = cleanPattern(pattern);
 	return (
@@ -49,6 +49,8 @@ const NthChildList = styled.ol`
 
 	li:nth-child(${props => props.pattern}) {
 		${props =>
-			props.highlightSelected ? highlightedSelectedElement : selectedElement};
+			props.highlightSelected
+				? highlightedSelectedElement
+				: selectedElement};
 	}
 `;

@@ -8,9 +8,9 @@ export default function Index() {
 		<div>
 			<Heading>:nth-child() CSS pseudo-class</Heading>
 			<p>
-				The patterns of :nth-child() can sometimes be tricky to understand. Edit
-				the selector pattern below to see how the selected elements change. Read
-				about how it works on{' '}
+				The patterns of :nth-child() can sometimes be tricky to
+				understand. Edit the selector pattern below to see how the
+				selected elements change. Read about how it works on{' '}
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"
 					target="_blank"
@@ -33,7 +33,11 @@ export default function Index() {
 					</a>
 				</Source>
 				<Byline>
-					<a href="https://twitter.com/sidp" target="_blank" rel="noopener">
+					<a
+						href="https://twitter.com/sidp"
+						target="_blank"
+						rel="noopener"
+					>
 						@sidp
 					</a>
 				</Byline>
@@ -60,6 +64,10 @@ const Footer = styled.p`
 	}
 `;
 
-const Source = styled.span`float: left;`;
+const Source = styled.span`
+	float: left;
+`;
 
-const Byline = styled.span`float: right;`;
+const Byline = styled.span`
+	float: right;
+`;
