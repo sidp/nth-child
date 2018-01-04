@@ -23,7 +23,7 @@ export default function Html({ headComponents, body, postBodyComponents }) {
 
 	const title = 'How to use the :nth-child() CSS pseudo-class';
 	const description =
-		'Trying to figure out the patterns for the nth-child CSS pseudo-class? Here’s how to use them.';
+		'The patterns of :nth-child() can sometimes be tricky to understand. Edit the selector to see how the selected elements change.';
 
 	return (
 		<html lang="en">
