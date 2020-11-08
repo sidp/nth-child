@@ -53,6 +53,12 @@ export default function Html({ headComponents, body, postBodyComponents }) {
 				<meta name="twitter:creator" content="@sidp" />
 				{headComponents}
 				{css}
+				<script
+					async
+					defer
+					data-domain="nth-child.simonsson.com"
+					src="https://st.simonsson.com/js/index.js"
+				></script>
 			</head>
 			<body>
 				<div id="___gatsby" dangerouslySetInnerHTML={{ __html: body }} />
