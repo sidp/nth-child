@@ -123,7 +123,7 @@ export default class NthChild extends Component {
 
 	render() {
 		return (
-			<div>
+			<React.Fragment>
 				<Control>
 					<label>
 						:nth-child(
@@ -162,7 +162,7 @@ export default class NthChild extends Component {
 					pattern={this.state.pattern}
 					highlightSelected={this.state.highlightSelected}
 				/>
-			</div>
+			</React.Fragment>
 		);
 	}
 }

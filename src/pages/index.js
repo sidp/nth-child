@@ -5,7 +5,7 @@ import { lightGray } from '../utils/styles';
 
 export default function Index() {
 	return (
-		<div>
+		<React.Fragment>
 			<Heading>:nth-child() CSS pseudo-class</Heading>
 			<p>
 				The patterns of :nth-child() can sometimes be tricky to understand. Edit
@@ -39,7 +39,7 @@ export default function Index() {
 					</a>
 				</Byline>
 			</Footer>
-		</div>
+		</React.Fragment>
 	);
 }
 

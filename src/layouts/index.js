@@ -4,7 +4,7 @@ import { injectGlobal } from 'styled-components';
 import { font, fontMono, blue, darkBlue } from '../utils/styles';
 
 export default function Layout(props) {
-	return <div>{props.children()}</div>;
+	return <React.Fragment>{props.children()}</React.Fragment>;
 }
 
 injectGlobal`

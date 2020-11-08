@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { hasNumberAt, getNumberAt, changeNumberAt } from '../utils/numbers';
+import { hasNumberAt, changeNumberAt } from '../utils/numbers';
 
 export default class NumberInput extends Component {
 	static defaultProps = {
@@ -9,8 +9,8 @@ export default class NumberInput extends Component {
 
 	handleKeyDown = (ev) => {
 		// When up or down is pressed
-		if ([38, 40].indexOf(ev.keyCode) !== -1) {
-			const { value, selectionStart, selectionEnd } = ev.target;
+		if ([38, 40].includes(ev.keyCode)) {
+			const { value, selectionStart } = ev.target;
 
 			/**
 			 * Always preventDefault on up-down press to make the behaviour
