@@ -7,7 +7,7 @@ export default class NumberInput extends Component {
 		onChange: (value, callback) => {},
 	};
 
-	handleKeyDown = ev => {
+	handleKeyDown = (ev) => {
 		// When up or down is pressed
 		if ([38, 40].indexOf(ev.keyCode) !== -1) {
 			const { value, selectionStart, selectionEnd } = ev.target;
@@ -53,7 +53,7 @@ export default class NumberInput extends Component {
 		}
 	};
 
-	handleOnChange = ev => {
+	handleOnChange = (ev) => {
 		this.props.onChange(ev.target.value);
 	};
 

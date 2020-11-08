@@ -138,20 +138,13 @@ export default class NthChild extends Component {
 					<CssBlock>
 						{' {'}
 						<SelectedBlockExample
-							onMouseEnter={
-								this.handleMouseEnterSelectedBlockExample
-							}
-							onMouseLeave={
-								this.handleMouseLeaveSelectedBlockExample
-							}
+							onMouseEnter={this.handleMouseEnterSelectedBlockExample}
+							onMouseLeave={this.handleMouseLeaveSelectedBlockExample}
 						/>
 						{'}'}
 					</CssBlock>
 					{!this.state.patternInUrl && (
-						<StyledLinkButton
-							tabIndex="2"
-							onClick={this.setPatternInUrl}
-						>
+						<StyledLinkButton tabIndex="2" onClick={this.setPatternInUrl}>
 							Make a URL for this pattern
 						</StyledLinkButton>
 					)}
@@ -159,9 +152,9 @@ export default class NthChild extends Component {
 				{patternIncludesOf(this.state.pattern) && (
 					<Notice>
 						<p>
-							Good try, but unfortunately this thing can’t show
-							patterns using the "<code>{'of <selector>'}</code>"
-							syntax. Life is tough on the cutting edge… 🔪
+							Good try, but unfortunately this thing can’t show patterns using
+							the "<code>{'of <selector>'}</code>" syntax. Life is tough on the
+							cutting edge… 🔪
 						</p>
 					</Notice>
 				)}

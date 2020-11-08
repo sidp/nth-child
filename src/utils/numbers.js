@@ -29,9 +29,9 @@ export function changeNumberAt(str, pos, increment = 0) {
 		return false;
 	}
 
-	const updatedNumber = updateNumber(number, num => num + increment);
+	const updatedNumber = updateNumber(number, (num) => num + increment);
 
-	const updatedEntities = entities.map(entity => {
+	const updatedEntities = entities.map((entity) => {
 		if (entity.startIndex === updatedNumber.startIndex) {
 			return updatedNumber;
 		}
@@ -104,7 +104,7 @@ function stringToEntities(str) {
  * Turns an array of entities back into a string.
  */
 function entitiesToString(entities) {
-	return entities.map(entity => entity.value).join('');
+	return entities.map((entity) => entity.value).join('');
 }
 
 /**
@@ -121,7 +121,7 @@ function isNumberEntity(entity) {
 function getNumberAt(entities, pos) {
 	const numbers = entities.filter(isNumberEntity);
 	const numbersAtPos = numbers.filter(
-		entity => pos >= entity.startIndex && pos <= entity.endIndex
+		(entity) => pos >= entity.startIndex && pos <= entity.endIndex
 	);
 
 	return numbersAtPos[0] || false;
@@ -138,7 +138,7 @@ function startsWithMathSymbol(str) {
  * Takes a number entity and a function, and applies the function to the
  * value of the entity. While also keeping the index values updated.
  */
-function updateNumber(entity, update = value => {}) {
+function updateNumber(entity, update = (value) => {}) {
 	const updated = { ...entity };
 	updated.number = update(entity.number);
 
