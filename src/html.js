@@ -16,7 +16,7 @@ export default function Html({ headComponents, body, postBodyComponents }) {
 				<link
 					rel="icon"
 					type="image/x-icon"
-					href={require('./assets/images/favicon.ico')}
+					href="/favicon.ico"
 				/>
 				<meta name="description" content={description} />
 				<meta property="og:title" content={title} />
