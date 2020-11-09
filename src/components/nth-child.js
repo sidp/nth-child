@@ -15,6 +15,7 @@ import {
 	selectedElement,
 	highlightedSelectedElement,
 } from '../utils/styles';
+import favicon from '../utils/favicon';
 
 const DEFAULT_PATTERN = '3n+1';
 // Characters that are not useful in a nth-child pattern
@@ -69,6 +70,7 @@ export default class NthChild extends Component {
 				patternInUrl: true,
 			}));
 		}
+		this.updateFavicon();
 	}
 
 	handleOnChange = (pattern, callback = () => {}) => {
@@ -76,6 +78,7 @@ export default class NthChild extends Component {
 			() => ({ pattern: cleanPattern(pattern) }),
 			() => {
 				callback();
+				this.updateFavicon();
 				if (this.state.patternInUrl) {
 					this.updatePatternInUrl();
 				}
@@ -107,6 +110,13 @@ export default class NthChild extends Component {
 		}
 
 		history.replaceState(undefined, undefined, hash);
+	};
+
+	updateFavicon = () => {
+		const iconEl = document.querySelector('head link[rel="icon"]');
+
+		iconEl.setAttribute('type', 'image/svg+xml');
+		iconEl.setAttribute('href', favicon(this.state.pattern));
 	};
 
 	handleMouseEnterSelectedBlockExample = () => {
