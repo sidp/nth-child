@@ -1,26 +1,7 @@
 import React from 'react';
 import absoluteUrl from './utils/absolute-url';
 
-let stylesStr;
-if (process.env.NODE_ENV === 'production') {
-	try {
-		stylesStr = require('!raw-loader!../public/styles.css');
-	} catch (e) {
-		console.log(e);
-	}
-}
-
 export default function Html({ headComponents, body, postBodyComponents }) {
-	let css;
-	if (process.env.NODE_ENV === 'production') {
-		css = (
-			<style
-				id="gatsby-inlined-css"
-				dangerouslySetInnerHTML={{ __html: stylesStr }}
-			/>
-		);
-	}
-
 	const title = 'How to use the :nth-child() CSS pseudo-class';
 	const description =
 		'The patterns of :nth-child() can sometimes be tricky to understand. Edit the selector to see how the selected elements change.';
@@ -52,7 +33,6 @@ export default function Html({ headComponents, body, postBodyComponents }) {
 				/>
 				<meta name="twitter:creator" content="@sidp" />
 				{headComponents}
-				{css}
 				<script
 					async
 					defer

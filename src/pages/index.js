@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Layout from '../components/layout';
 import NthChild from '../components/nth-child';
 import { lightGray } from '../utils/styles';
 
 export default function Index() {
 	return (
-		<React.Fragment>
+		<Layout>
 			<Heading>:nth-child() CSS pseudo-class</Heading>
 			<p>
 				The patterns of :nth-child() can sometimes be tricky to understand. Edit
@@ -39,7 +40,7 @@ export default function Index() {
 					</a>
 				</Byline>
 			</Footer>
-		</React.Fragment>
+		</Layout>
 	);
 }
 

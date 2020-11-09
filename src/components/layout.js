@@ -1,13 +1,13 @@
 import React from 'react';
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import { font, fontMono, blue, darkBlue } from '../utils/styles';
 
 export default function Layout(props) {
-	return <React.Fragment>{props.children()}</React.Fragment>;
+	return <React.Fragment><Global />{props.children}</React.Fragment>;
 }
 
-injectGlobal`
+const Global = createGlobalStyle`
 	*,
 	*::before,
 	*::after {
