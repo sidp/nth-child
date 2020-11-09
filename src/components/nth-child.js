@@ -162,8 +162,8 @@ export default class NthChild extends Component {
 				{patternIncludesOf(this.state.pattern) && (
 					<Notice>
 						<p>
-							Sorry, this thing can unfortunately not show patterns using the "
-							<code>{'of <selector>'}</code>" syntax.
+							This thing can unfortunately not show patterns using the{' '}
+							<code>{'of <selector>'}</code> syntax.
 						</p>
 					</Notice>
 				)}
@@ -234,6 +234,10 @@ const StyledLinkButton = styled(LinkButton)`
 const Notice = styled.div`
 	background-color: ${lightYellow};
 	padding: 0.66em 1em 0.75em;
+
+	code {
+		white-space: pre;
+	}
 
 	p:first-child {
 		margin-top: 0;
