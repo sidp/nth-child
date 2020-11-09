@@ -78,7 +78,7 @@ function countEntityPositions(entities, value) {
 function classifyEntity(entity) {
 	const updated = { type: TEXT_ENTITY };
 
-	if (entity.value.match(/([+\-]?[0-9]+)/) !== null) {
+	if (entity.value.match(/([+-]?[0-9]+)/) !== null) {
 		updated.type = NUMBER_ENTITY;
 		updated.number = Number(entity.value);
 	}
@@ -90,7 +90,7 @@ function classifyEntity(entity) {
  * Parses a string into entities
  */
 function stringToEntities(str) {
-	const re = /([+\-]?[0-9]+)|([^0-9+\-]+)|([+\-])/g;
+	const re = /([+-]?[0-9]+)|([^0-9+-]+)|([+-])/g;
 	const parts = str.match(re);
 
 	if (parts === null) {
@@ -131,7 +131,7 @@ function getNumberAt(entities, pos) {
  * Takes a string and checks if it begins with a mathematical symbol.
  */
 function startsWithMathSymbol(str) {
-	return str.match(/^(\+|\-)/) !== null;
+	return str.match(/^(\+|-)/) !== null;
 }
 
 /**

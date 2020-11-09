@@ -19,7 +19,7 @@ import favicon from '../utils/favicon';
 
 const DEFAULT_PATTERN = '3n+1';
 // Characters that are not useful in a nth-child pattern
-const INVALID_CHARS_REGEX = /[\(\)\\\/\<\%\€\$]/g;
+const INVALID_CHARS_REGEX = /[()\\/<%€$]/g;
 
 function allowedPattern(pattern) {
 	const ptrn = pattern.trim();
@@ -96,7 +96,7 @@ export default class NthChild extends Component {
 	};
 
 	updatePatternInUrl = () => {
-		if (!history.replaceState) {
+		if (!('replaceState' in window.history)) {
 			return; // return early if there's no support for history.replaceState()
 		}
 
@@ -109,7 +109,7 @@ export default class NthChild extends Component {
 			hash = ' ';
 		}
 
-		history.replaceState(undefined, undefined, hash);
+		window.history.replaceState(undefined, undefined, hash);
 	};
 
 	updateFavicon = () => {
@@ -135,13 +135,13 @@ export default class NthChild extends Component {
 		return (
 			<React.Fragment>
 				<Control>
-					<label>
+					<label htmlFor="pattern">
 						:nth-child(
 						<StyledNumberInput
 							type="text"
+							name="pattern"
 							value={this.state.pattern}
 							onChange={this.handleOnChange}
-							tabIndex="1"
 						/>
 						)
 					</label>
@@ -154,7 +154,7 @@ export default class NthChild extends Component {
 						{'}'}
 					</CssBlock>
 					{!this.state.patternInUrl && (
-						<StyledLinkButton tabIndex="2" onClick={this.setPatternInUrl}>
+						<StyledLinkButton onClick={this.setPatternInUrl}>
 							Make a URL for this pattern
 						</StyledLinkButton>
 					)}

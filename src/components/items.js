@@ -8,7 +8,7 @@ import {
 } from '../utils/styles';
 
 // Match characters that override the styling of the page itself
-const FORBIDDEN_CHARS_REGEX = /[\\\[\]]/g;
+const FORBIDDEN_CHARS_REGEX = /[\\[\]]/g;
 function cleanPattern(pattern) {
 	return pattern.replace(FORBIDDEN_CHARS_REGEX, '');
 }
