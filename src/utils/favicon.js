@@ -26,9 +26,18 @@ export default function favicon(pattern) {
 }
 
 const isMatched = (pattern, i) => {
+	pattern = pattern.trim();
 	const seq = Array(50)
 		.fill('')
 		.map((_, i) => i);
+
+	if (pattern === 'odd') {
+		return i % 2 === 1;
+	}
+
+	if (pattern === 'even') {
+		return i % 2 === 0;
+	}
 
 	if (pattern.indexOf('n') !== -1) {
 		const parts = pattern.split('n');
