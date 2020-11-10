@@ -1,0 +1,20 @@
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+	<style>
+		.bar {
+			fill: #edf2f7;
+		}
+		.bar.selected {
+			fill: #37dc66;
+		}
+		@media (prefers-color-scheme: dark) {
+			.bar {
+				fill: #929fad;
+			}
+		}
+	</style>
+	<rect class="bar selected" x="1" y="1" width="14" height="2" rx="1"/>
+	<rect class="bar" x="1" y="4" width="14" height="2" rx="1"/>
+	<rect class="bar" x="1" y="7" width="14" height="2" rx="1"/>
+	<rect class="bar selected" x="1" y="10" width="14" height="2" rx="1"/>
+	<rect class="bar" x="1" y="13" width="14" height="2" rx="1"/>
+</svg>

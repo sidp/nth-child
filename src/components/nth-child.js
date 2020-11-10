@@ -113,9 +113,16 @@ export default class NthChild extends Component {
 	};
 
 	updateFavicon = () => {
-		const iconEl = document.querySelector('head link[rel="icon"]');
+		const icoEl = document.querySelector(
+			'head link[rel="icon"][type="image/x-icon"]'
+		);
+		if (icoEl) {
+			icoEl.parentElement.removeChild(icoEl);
+		}
 
-		iconEl.setAttribute('type', 'image/svg+xml');
+		const iconEl = document.querySelector(
+			'head link[rel="icon"][type="image/svg+xml"]'
+		);
 		iconEl.setAttribute('href', favicon(this.state.pattern));
 	};
 

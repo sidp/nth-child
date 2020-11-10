@@ -15,8 +15,8 @@ export default function Html({ headComponents, body, postBodyComponents }) {
 				<title>How to use nth-child</title>
 				<link
 					rel="icon"
-					type="image/x-icon"
-					href="/favicon.ico"
+					type="image/svg+xml"
+					href={require('./assets/images/favicon.svg')}
 				/>
 				<meta name="description" content={description} />
 				<meta property="og:title" content={title} />
