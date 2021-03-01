@@ -15,12 +15,12 @@
 		"gatsby-link": "^2.4.16",
 		"gatsby-plugin-google-analytics": "^2.4.0",
 		"gatsby-plugin-styled-components": "^3.3.14",
-		"react": "^16",
-		"react-dom": "^16",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
 		"react-is": "^17.0.1",
 		"styled-components": "^5.2.1"
 	},
 	"devDependencies": {
-		"prettier": "2.1.2"
+		"prettier": "2.2.1"
 	}
 }
