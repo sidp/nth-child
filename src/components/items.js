@@ -5,6 +5,7 @@ import {
 	lightGray,
 	selectedElement,
 	highlightedSelectedElement,
+	darkGray,
 } from '../utils/styles';
 
 // Match characters that override the styling of the page itself
@@ -40,7 +41,12 @@ export default function Items({
  */
 const NthChildList = styled.ol`
 	li {
+		border-radius: 2px;
 		background-color: ${lightGray};
+
+		@media (prefers-color-scheme: dark) {
+			background-color: ${darkGray};
+		}
 	}
 
 	li + li {

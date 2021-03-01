@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/layout';
 import NthChild from '../components/nth-child';
-import { lightGray } from '../utils/styles';
+import Global, { darkGray, lightGray } from '../utils/styles';
 
 export default function Index() {
 	return (
-		<Layout>
+		<React.Fragment>
+			<Global />
 			<Heading>:nth-child() CSS pseudo-class</Heading>
 			<p>
 				The patterns of :nth-child() can sometimes be tricky to understand. Edit
@@ -39,7 +39,7 @@ export default function Index() {
 					</a>
 				</Byline>
 			</Footer>
-		</Layout>
+		</React.Fragment>
 	);
 }
 
@@ -53,6 +53,10 @@ const Footer = styled.p`
 	border-top: 2px solid ${lightGray};
 	margin-top: 2.25rem;
 	padding-top: 0.75rem;
+
+	@media (prefers-color-scheme: dark) {
+		border-color: ${darkGray};
+	}
 
 	&::after {
 		content: '';

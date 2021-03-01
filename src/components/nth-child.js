@@ -11,6 +11,8 @@ import {
 	gray,
 	lightGray,
 	shadedLightGray,
+	darkGray,
+	shadedDarkGray,
 	lightYellow,
 	selectedElement,
 	highlightedSelectedElement,
@@ -213,6 +215,20 @@ const StyledNumberInput = styled(NumberInput)`
 		outline: 0;
 		box-shadow: inset 0 0 0 2px ${blue};
 	}
+
+	@media (prefers-color-scheme: dark) {
+		color: #fff;
+		box-shadow: inset 0 0 0 2px ${darkGray};
+
+		&:hover {
+			box-shadow: inset 0 0 0 2px ${shadedDarkGray};
+		}
+
+		&:focus {
+			outline: 0;
+			box-shadow: inset 0 0 0 2px ${blue};
+		}
+	}
 `;
 
 const CssBlock = styled.span`
@@ -224,8 +240,10 @@ const SelectedBlockExample = styled.span`
 	display: inline-block;
 	width: 0.6em;
 	height: 0.6em;
+	vertical-align: 0.05em;
 	margin-left: 2px;
 	margin-right: 2px;
+	border-radius: 2px;
 	${selectedElement};
 
 	&:hover {
