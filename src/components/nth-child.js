@@ -63,6 +63,7 @@ export default class NthChild extends Component {
 	};
 
 	static defaultProps = {};
+	trackedEvent = false;
 
 	componentDidMount() {
 		const patternFromLocation = getPatternFromLocation();
@@ -76,6 +77,11 @@ export default class NthChild extends Component {
 	}
 
 	handleOnChange = (pattern, callback = () => {}) => {
+		if (typeof window.plausible === 'function' && this.trackedEvent === false) {
+			window.plausible('Changed pattern');
+			this.trackedEvent = true;
+		}
+
 		this.setState(
 			() => ({ pattern: cleanPattern(pattern) }),
 			() => {
