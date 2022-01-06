@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
 	reactStrictMode: true,
-	basePath: 'https://nth-child.simonsson.com',
+	env: {
+		domain: 'https://nth-child.simonsson.com',
+	},
 };

@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 import { hasNumberAt, changeNumberAt } from '../utils/numbers';
 
-export default class NumberInput extends Component {
+type NumberInputProps = Omit<
+	React.HTMLAttributes<HTMLInputElement>,
+	'onChange'
+> & {
+	name: string;
+	value: string;
+	onChange: (value: string, callback?: () => void) => void;
+};
+
+export default class NumberInput extends Component<NumberInputProps> {
 	static defaultProps = {
 		value: '',
-		onChange: (value, callback) => {},
+		onChange: () => {},
 	};
 
-	handleKeyDown = (ev) => {
+	handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+		if (!(ev.target instanceof HTMLInputElement)) return;
+
 		// When up or down is pressed
-		if ([38, 40].includes(ev.keyCode)) {
+		if (['ArrowUp', 'ArrowDown'].includes(ev.key)) {
 			const { value, selectionStart } = ev.target;
+
+			if (selectionStart === null) return;
 
 			/**
 			 * Always preventDefault on up-down press to make the behaviour
@@ -44,6 +57,12 @@ export default class NumberInput extends Component {
 				 */
 				ev.persist(); // keep event around for use in callback
 				this.props.onChange(changed.str, () => {
+					if (
+						typeof changed === 'boolean' ||
+						!(ev.target instanceof HTMLInputElement)
+					)
+						return;
+
 					ev.target.setSelectionRange(
 						changed.selectionStartIndex,
 						changed.selectionEndIndex
@@ -53,7 +72,8 @@ export default class NumberInput extends Component {
 		}
 	};
 
-	handleOnChange = (ev) => {
+	handleOnChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+		if (!(ev.target instanceof HTMLInputElement)) return;
 		this.props.onChange(ev.target.value);
 	};
 
@@ -66,6 +86,7 @@ export default class NumberInput extends Component {
 		return (
 			<input
 				{...props}
+				type="text"
 				onKeyDown={this.handleKeyDown}
 				onChange={this.handleOnChange}
 			/>

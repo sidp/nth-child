@@ -1,7 +1,7 @@
 import { green, lightGray, gray } from './styles';
 
-export default function favicon(pattern) {
-	const matches = (i) => isMatched(pattern, i);
+export default function favicon(pattern: string) {
+	const matches = (i: number) => isMatched(pattern, i);
 
 	return `data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
 		<style>
@@ -35,7 +35,7 @@ export default function favicon(pattern) {
 	</svg>`;
 }
 
-const isMatched = (pattern, i) => {
+const isMatched = (pattern: string, i: number) => {
 	pattern = pattern.trim();
 	const seq = Array(50)
 		.fill('')
@@ -62,7 +62,7 @@ const isMatched = (pattern, i) => {
 
 		const addition = parts[1] ? Number(parts[1]) : 0;
 
-		return seq.some((s) => parts[0] * s + addition === i);
+		return seq.some((s) => Number(parts[0]) * s + addition === i);
 	}
 
 	const no = Number(pattern);
@@ -70,4 +70,4 @@ const isMatched = (pattern, i) => {
 	return no === i;
 };
 
-const svgColor = (color) => encodeURIComponent(color);
+const svgColor = (color: string) => encodeURIComponent(color);

@@ -23,16 +23,16 @@ const DEFAULT_PATTERN = '3n+1';
 // Characters that are not useful in a nth-child pattern
 const INVALID_CHARS_REGEX = /[()\\/<%€$]/g;
 
-function allowedPattern(pattern) {
+function allowedPattern(pattern: string) {
 	const ptrn = pattern.trim();
 	return ptrn.match(INVALID_CHARS_REGEX) === null;
 }
 
-function cleanPattern(pattern) {
+function cleanPattern(pattern: string) {
 	return pattern.replace(INVALID_CHARS_REGEX, '');
 }
 
-function patternIncludesOf(pattern) {
+function patternIncludesOf(pattern: string) {
 	return pattern.indexOf('of') !== -1;
 }
 
@@ -76,7 +76,7 @@ export default class NthChild extends Component {
 		this.updateFavicon();
 	}
 
-	handleOnChange = (pattern, callback = () => {}) => {
+	handleOnChange = (pattern: string, callback = () => {}) => {
 		if (typeof window.plausible === 'function' && this.trackedEvent === false) {
 			window.plausible('Changed pattern');
 			this.trackedEvent = true;
@@ -94,7 +94,7 @@ export default class NthChild extends Component {
 		);
 	};
 
-	setPatternInUrl = () => {
+	setPatternInUrl = (_ev: React.MouseEvent) => {
 		this.setState(
 			() => ({
 				patternInUrl: true,
@@ -117,7 +117,7 @@ export default class NthChild extends Component {
 			hash = ' ';
 		}
 
-		window.history.replaceState(undefined, undefined, hash);
+		window.history.replaceState(undefined, '', hash);
 	};
 
 	updateFavicon = () => {
@@ -125,7 +125,7 @@ export default class NthChild extends Component {
 			'head link[rel="icon"][type="image/x-icon"]'
 		);
 		if (icoEl) {
-			icoEl.parentElement.removeChild(icoEl);
+			icoEl.parentElement?.removeChild(icoEl);
 		}
 
 		const iconEl = document.querySelector(
@@ -155,7 +155,6 @@ export default class NthChild extends Component {
 					<label htmlFor="pattern">
 						:nth-child(
 						<StyledNumberInput
-							type="text"
 							name="pattern"
 							value={this.state.pattern}
 							onChange={this.handleOnChange}

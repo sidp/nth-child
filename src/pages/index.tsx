@@ -11,6 +11,9 @@ export default function Index() {
 	const description =
 		'The patterns of :nth-child() can sometimes be tricky to understand. Edit the selector to see how the selected elements change.';
 
+	const absoluteUrl = (path: string) =>
+		process.env.domain + router.basePath + path;
+
 	return (
 		<>
 			<Head>
@@ -24,14 +27,14 @@ export default function Index() {
 				<meta property="og:title" content={title} />
 				<meta
 					property="og:image"
-					content={router.basePath + '/assets/images/og-image.png'}
+					content={absoluteUrl('assets/images/og-image.png')}
 				/>
 				<meta name="twitter:card" content="summary" />
 				<meta name="twitter:title" content={title} />
 				<meta name="twitter:description" content={description} />
 				<meta
 					name="twitter:image"
-					content={router.basePath + '/assets/images/twitter-card.png'}
+					content={absoluteUrl('assets/images/twitter-card.png')}
 				/>
 				<meta name="twitter:creator" content="@sidp" />
 			</Head>

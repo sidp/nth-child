@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import {
@@ -10,18 +10,24 @@ import {
 
 // Match characters that override the styling of the page itself
 const FORBIDDEN_CHARS_REGEX = /[\\[\]]/g;
-function cleanPattern(pattern) {
+function cleanPattern(pattern: string) {
 	return pattern.replace(FORBIDDEN_CHARS_REGEX, '');
 }
 
-export default function Items({
+type ItemsProps = {
+	numberOfItems: number;
+	pattern: string;
+	highlightSelected: boolean;
+};
+
+const Items: FC<ItemsProps> = ({
 	numberOfItems = 10,
 	pattern = '',
 	highlightSelected = false,
-}) {
-	const items = Array.apply(null, { length: numberOfItems }).map((item, i) => (
-		<li key={i} />
-	));
+}) => {
+	const items = Array(numberOfItems)
+		.fill('')
+		.map((item, i) => <li key={i} />);
 
 	const cleanedPattern = cleanPattern(pattern);
 	return (
@@ -32,14 +38,14 @@ export default function Items({
 			{items}
 		</NthChildList>
 	);
-}
+};
 
 /**
  * The use of :nth-child and props below generates a new css class each time
  * the prop is changed to something new. This can cause the styles to grow
  * very large.
  */
-const NthChildList = styled.ol`
+const NthChildList = styled.ol<{ pattern: string; highlightSelected: boolean }>`
 	li {
 		border-radius: 2px;
 		background-color: ${lightGray};
@@ -58,3 +64,5 @@ const NthChildList = styled.ol`
 			props.highlightSelected ? highlightedSelectedElement : selectedElement};
 	}
 `;
+
+export default Items;
