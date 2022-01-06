@@ -131,7 +131,9 @@ export default class NthChild extends Component {
 		const iconEl = document.querySelector(
 			'head link[rel="icon"][type="image/svg+xml"]'
 		);
-		iconEl.setAttribute('href', favicon(this.state.pattern));
+		if (iconEl) {
+			iconEl.setAttribute('href', favicon(this.state.pattern));
+		}
 	};
 
 	handleMouseEnterSelectedBlockExample = () => {

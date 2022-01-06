@@ -1,12 +1,40 @@
 import React from 'react';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import NthChild from '../components/nth-child';
-import Global, { darkGray, lightGray } from '../utils/styles';
+import { darkGray, lightGray } from '../utils/styles';
 
 export default function Index() {
+	const router = useRouter();
+	const title = 'How to use the :nth-child() CSS pseudo-class';
+	const description =
+		'The patterns of :nth-child() can sometimes be tricky to understand. Edit the selector to see how the selected elements change.';
+
 	return (
-		<React.Fragment>
-			<Global />
+		<>
+			<Head>
+				<title>How to use nth-child</title>
+				<link
+					rel="icon"
+					type="image/svg+xml"
+					href={'/assets/images/favicon.svg'}
+				/>
+				<meta name="description" content={description} />
+				<meta property="og:title" content={title} />
+				<meta
+					property="og:image"
+					content={router.basePath + '/assets/images/og-image.png'}
+				/>
+				<meta name="twitter:card" content="summary" />
+				<meta name="twitter:title" content={title} />
+				<meta name="twitter:description" content={description} />
+				<meta
+					name="twitter:image"
+					content={router.basePath + '/assets/images/twitter-card.png'}
+				/>
+				<meta name="twitter:creator" content="@sidp" />
+			</Head>
 			<Heading>:nth-child() CSS pseudo-class</Heading>
 			<p>
 				The patterns of :nth-child() can sometimes be tricky to understand. Edit
@@ -39,7 +67,7 @@ export default function Index() {
 					</a>
 				</Byline>
 			</Footer>
-		</React.Fragment>
+		</>
 	);
 }
 
