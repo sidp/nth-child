@@ -1,9 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
 import NthChild from '../components/nth-child';
-import { darkGray, lightGray } from '../utils/styles';
+import ExternalLink from '../components/external-link';
 
 export default function Index() {
 	const router = useRouter();
@@ -38,68 +37,46 @@ export default function Index() {
 				/>
 				<meta name="twitter:creator" content="@sidp" />
 			</Head>
-			<Heading>:nth-child() CSS pseudo-class</Heading>
-			<p>
-				The patterns of :nth-child() can sometimes be tricky to understand. Edit
-				the selector pattern below to see how the selected elements change. Read
-				about how it works on{' '}
-				<a
-					href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"
-					target="_blank"
-					rel="noopener"
-				>
-					MDN
-				</a>
-				.
-			</p>
-			<NthChild />
-			<Footer>
-				<Source>
-					Source code on{' '}
-					<a
-						href="https://github.com/sidp/nth-child"
+			<div className="max-w-2xl mx-auto p-5 md:p-9">
+				<h1 className="text-3xl mb-3 font-bold">
+					:nth-child() CSS pseudo-class
+				</h1>
+				<p className="mb-6 text-lg">
+					The patterns of :nth-child() can sometimes be tricky to understand.
+					Edit the selector pattern below to see how the selected elements
+					change. Read about how it works on{' '}
+					<ExternalLink
+						href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"
 						target="_blank"
 						rel="noopener"
 					>
-						GitHub
-					</a>
-				</Source>
-				<Byline>
-					<a href="https://twitter.com/sidp" target="_blank" rel="noopener">
-						@sidp
-					</a>
-				</Byline>
-			</Footer>
+						MDN
+					</ExternalLink>
+					.
+				</p>
+				<NthChild />
+				<footer className="text-sm mt-8 pt-3 border-t-2 border-slate-200 dark:border-slate-700 flex justify-between">
+					<div>
+						Source code on{' '}
+						<ExternalLink
+							href="https://github.com/sidp/nth-child"
+							target="_blank"
+							rel="noopener"
+						>
+							GitHub
+						</ExternalLink>
+					</div>
+					<div>
+						<ExternalLink
+							href="https://twitter.com/sidp"
+							target="_blank"
+							rel="noopener"
+						>
+							@sidp
+						</ExternalLink>
+					</div>
+				</footer>
+			</div>
 		</>
 	);
 }
-
-const Heading = styled.h1`
-	font-size: 1.4em;
-	margin: 0.33em 0;
-`;
-
-const Footer = styled.p`
-	font-size: 0.8rem;
-	border-top: 2px solid ${lightGray};
-	margin-top: 2.25rem;
-	padding-top: 0.75rem;
-
-	@media (prefers-color-scheme: dark) {
-		border-color: ${darkGray};
-	}
-
-	&::after {
-		content: '';
-		clear: both;
-		display: table;
-	}
-`;
-
-const Source = styled.span`
-	float: left;
-`;
-
-const Byline = styled.span`
-	float: right;
-`;

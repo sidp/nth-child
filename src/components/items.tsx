@@ -1,12 +1,7 @@
+import Head from 'next/head';
 import React, { FC } from 'react';
-import styled from 'styled-components';
 
-import {
-	lightGray,
-	selectedElement,
-	highlightedSelectedElement,
-	darkGray,
-} from '../utils/styles';
+import { selectedElement, highlightedSelectedElement } from '../utils/styles';
 
 // Match characters that override the styling of the page itself
 const FORBIDDEN_CHARS_REGEX = /[\\[\]]/g;
@@ -27,42 +22,30 @@ const Items: FC<ItemsProps> = ({
 }) => {
 	const items = Array(numberOfItems)
 		.fill('')
-		.map((item, i) => <li key={i} />);
+		.map((_, i) => (
+			<li
+				key={i}
+				className="rounded-sm bg-slate-200 dark:bg-slate-700 h-7 list-decimal list-item list-outside ml-8 text-slate-500 mb-0.5"
+			/>
+		));
 
 	const cleanedPattern = cleanPattern(pattern);
 	return (
-		<NthChildList
-			pattern={cleanedPattern}
-			highlightSelected={highlightSelected}
-		>
-			{items}
-		</NthChildList>
+		<>
+			<Head>
+				<style
+					dangerouslySetInnerHTML={{
+						__html: `
+							.nth-child-list li:nth-child(${cleanedPattern}) {
+								${highlightSelected ? highlightedSelectedElement : selectedElement};
+							}
+						`,
+					}}
+				/>
+			</Head>
+			<ul className="nth-child-list">{items}</ul>
+		</>
 	);
 };
-
-/**
- * The use of :nth-child and props below generates a new css class each time
- * the prop is changed to something new. This can cause the styles to grow
- * very large.
- */
-const NthChildList = styled.ol<{ pattern: string; highlightSelected: boolean }>`
-	li {
-		border-radius: 2px;
-		background-color: ${lightGray};
-
-		@media (prefers-color-scheme: dark) {
-			background-color: ${darkGray};
-		}
-	}
-
-	li + li {
-		margin-top: 2px;
-	}
-
-	li:nth-child(${(props) => props.pattern}) {
-		${(props) =>
-			props.highlightSelected ? highlightedSelectedElement : selectedElement};
-	}
-`;
 
 export default Items;

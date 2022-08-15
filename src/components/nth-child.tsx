@@ -1,22 +1,8 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component, FC } from 'react';
 
 import NumberInput from './number-input';
 import Items from './items';
 import LinkButton from './link-button';
-
-import {
-	fontMono,
-	blue,
-	gray,
-	lightGray,
-	shadedLightGray,
-	darkGray,
-	shadedDarkGray,
-	lightYellow,
-	selectedElement,
-	highlightedSelectedElement,
-} from '../utils/styles';
 import favicon from '../utils/favicon';
 
 const DEFAULT_PATTERN = '3n+1';
@@ -150,37 +136,40 @@ export default class NthChild extends Component {
 
 	render() {
 		return (
-			<React.Fragment>
-				<Control>
-					<label htmlFor="pattern">
+			<>
+				<div className="text-xl font-mono text-slate-500 mb-5">
+					<label>
 						:nth-child(
-						<StyledNumberInput
+						<NumberInput
+							className=" border-2 border-slate-300 dark:border-slate-600 hover:border-slate-400 focus:border-blue-600 focus-visible:outline-none p-0 inline-block bg-transparent appearance-none text-slate dark:text-slate-100 size-xl text-center w-20 rounded-md"
 							name="pattern"
 							value={this.state.pattern}
 							onChange={this.handleOnChange}
 						/>
 						)
 					</label>
-					<CssBlock>
+					<span className="hidden sm:inline-block">
 						{' {'}
-						<SelectedBlockExample
+						<span
+							className="inline-block w-4 h-4 mx-1 rounded-sm bg-green-500 hover:bg-green-600"
 							onMouseEnter={this.handleMouseEnterSelectedBlockExample}
 							onMouseLeave={this.handleMouseLeaveSelectedBlockExample}
 						/>
 						{'}'}
-					</CssBlock>
+					</span>
 					{!this.state.patternInUrl && (
-						<StyledLinkButton onClick={this.setPatternInUrl}>
+						<LinkButton
+							className="float-right mt-1"
+							onClick={this.setPatternInUrl}
+						>
 							Make a URL for this pattern
-						</StyledLinkButton>
+						</LinkButton>
 					)}
-				</Control>
+				</div>
 				{patternIncludesOf(this.state.pattern) && (
 					<Notice>
-						<p>
-							This thing can unfortunately not show patterns using the{' '}
-							<code>{'of <selector>'}</code> syntax.
-						</p>
+						This thing can unfortunately not show patterns using the{' '}
+						<code className="whitespace-pre">{'of <selector>'}</code> syntax.
 					</Notice>
 				)}
 				<Items
@@ -188,94 +177,11 @@ export default class NthChild extends Component {
 					pattern={this.state.pattern}
 					highlightSelected={this.state.highlightSelected}
 				/>
-			</React.Fragment>
+			</>
 		);
 	}
 }
 
-const Control = styled.p`
-	font-size: 1.05em;
-	font-family: ${fontMono};
-	color: ${gray};
-`;
-
-const StyledNumberInput = styled(NumberInput)`
-	border: 0;
-	padding: 0;
-	display: inline-block;
-	background-color: transparent;
-	appearance: none;
-	color: #000;
-	font-size: 1em;
-	font-family: inherit;
-	text-align: center;
-	width: 4.5em;
-	line-height: 1.6;
-	border-radius: 3px;
-	box-shadow: inset 0 0 0 2px ${lightGray};
-
-	&:hover {
-		box-shadow: inset 0 0 0 2px ${shadedLightGray};
-	}
-
-	&:focus {
-		outline: 0;
-		box-shadow: inset 0 0 0 2px ${blue};
-	}
-
-	@media (prefers-color-scheme: dark) {
-		color: #fff;
-		box-shadow: inset 0 0 0 2px ${darkGray};
-
-		&:hover {
-			box-shadow: inset 0 0 0 2px ${shadedDarkGray};
-		}
-
-		&:focus {
-			outline: 0;
-			box-shadow: inset 0 0 0 2px ${blue};
-		}
-	}
-`;
-
-const CssBlock = styled.span`
-	@media (max-width: 350px) {
-		display: none;
-	}
-`;
-const SelectedBlockExample = styled.span`
-	display: inline-block;
-	width: 0.6em;
-	height: 0.6em;
-	vertical-align: 0.05em;
-	margin-left: 2px;
-	margin-right: 2px;
-	border-radius: 2px;
-	${selectedElement};
-
-	&:hover {
-		${highlightedSelectedElement};
-	}
-`;
-
-const StyledLinkButton = styled(LinkButton)`
-	float: right;
-	margin-top: 4px;
-`;
-
-const Notice = styled.div`
-	background-color: ${lightYellow};
-	padding: 0.66em 1em 0.75em;
-
-	code {
-		white-space: pre;
-	}
-
-	p:first-child {
-		margin-top: 0;
-	}
-
-	p:last-child {
-		margin-bottom: 0;
-	}
-`;
+const Notice: FC = ({ children }) => (
+	<p className="px-4 py-3 bg-yellow-100">{children}</p>
+);

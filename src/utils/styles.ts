@@ -1,5 +1,3 @@
-import { css, createGlobalStyle } from 'styled-components';
-
 export const font =
 	'-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 export const fontMono =
@@ -17,11 +15,11 @@ export const darkGray = '#3A434E';
 export const shadedDarkGray = '#4B5560';
 export const lightYellow = '#fff7d1';
 
-export const selectedElement = css`
+export const selectedElement = `
 	background-color: ${green};
 `;
 
-export const highlightedSelectedElement = css`
+export const highlightedSelectedElement = `
 	background-color: ${shadedGreen};
 	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.04);
 
@@ -30,49 +28,3 @@ export const highlightedSelectedElement = css`
 		background-color: #3ee86f;
 	}
 `;
-
-const Global = createGlobalStyle`
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
-
-	body {
-		font-size: 1.2rem;
-		font-family: ${font};
-		line-height: 1.4;
-		max-width: 35em;
-		margin: 0 auto;
-		padding: 0.25em 0.5em;
-
-		@media (min-width: 50em) {
-			padding: 1em 1.5em;
-		}
-	}
-
-	a {
-		color: ${blue};
-	}
-
-	a:active {
-		color: ${darkBlue};
-
-		@media (prefers-color-scheme: dark) {
-			color: ${lightBlue};
-		}
-	}
-
-	code {
-		font-family: ${fontMono};
-	}
-
-	@media (prefers-color-scheme: dark) {
-		html {
-			background-color: #000;
-			color: #fff;
-		}
-	}
-`;
-
-export default Global;

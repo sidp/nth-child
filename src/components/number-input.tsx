@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { hasNumberAt, changeNumberAt } from '../utils/numbers';
 
-type NumberInputProps = Omit<
+type NumberInputAttributes = Omit<
 	React.HTMLAttributes<HTMLInputElement>,
 	'onChange'
-> & {
+>;
+
+type NumberInputProps = NumberInputAttributes & {
 	name: string;
-	value: string;
 	onChange: (value: string, callback?: () => void) => void;
 };
 

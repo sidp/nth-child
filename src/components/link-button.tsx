@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import SymbolLink from './symbol-link';
 import { gray, blue } from '../utils/styles';
 
@@ -29,34 +28,15 @@ export default class LinkButton extends Component<
 		const { children, ...props } = this.props;
 		const symbolColor = this.state.hover ? blue : gray;
 		return (
-			<PlainButton
+			<button
+				className=""
 				{...props}
 				onMouseEnter={this.startHover}
 				onMouseLeave={this.endHover}
 			>
-				<Label>{children}</Label>
+				<span className="sr-only">{children}</span>
 				<SymbolLink color={symbolColor} />
-			</PlainButton>
+			</button>
 		);
 	}
 }
-
-const PlainButton = styled.button`
-	cursor: pointer;
-	background: transparent;
-	border: 0;
-	padding: 0;
-	margin: 0;
-	appearance: none;
-`;
-
-const Label = styled.span`
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	height: 1px;
-	width: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-`;
