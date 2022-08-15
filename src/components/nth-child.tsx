@@ -1,4 +1,4 @@
-import React, { Component, FC } from 'react';
+import React, { FC, Component, ReactNode } from 'react';
 
 import NumberInput from './number-input';
 import Items from './items';
@@ -182,6 +182,6 @@ export default class NthChild extends Component {
 	}
 }
 
-const Notice: FC = ({ children }) => (
+const Notice: FC<{ children: ReactNode }> = ({ children }) => (
 	<p className="px-4 py-3 bg-yellow-100">{children}</p>
 );

@@ -10,12 +10,13 @@
 	},
 	"dependencies": {
 		"next": "^12.0.7",
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2"
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
-		"@types/react": "^17.0.38",
-		"@types/react-dom": "^17.0.11",
+		"@types/node": "^18.7.4",
+		"@types/react": "^18.0.17",
+		"@types/react-dom": "^18.0.6",
 		"autoprefixer": "^10.4.1",
 		"postcss": "^8.4.5",
 		"prettier": "2.2.1",
