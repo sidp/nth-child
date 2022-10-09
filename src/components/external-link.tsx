@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 
-type ExternalLinksProps = React.HTMLAttributes<HTMLAnchorElement> & {
+type ExternalLinksProps = React.HTMLProps<HTMLAnchorElement> & {
 	children: ReactNode;
 };
 
