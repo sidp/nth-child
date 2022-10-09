@@ -25,7 +25,7 @@ const Items: FC<ItemsProps> = ({
 		.map((_, i) => (
 			<li
 				key={i}
-				className="rounded-sm bg-slate-200 dark:bg-slate-700 h-7 list-decimal list-item list-outside ml-8 text-slate-500 mb-0.5"
+				className="rounded-sm bg-slate-200 dark:bg-slate-700 h-7 list-decimal list-item list-outside ml-8 mb-0.5"
 			/>
 		));
 
