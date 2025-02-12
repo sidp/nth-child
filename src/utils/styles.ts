@@ -16,15 +16,15 @@ export const shadedDarkGray = '#4B5560';
 export const lightYellow = '#fff7d1';
 
 export const selectedElement = `
-	background-color: ${green};
+	background-color: var(--color-green-500);
 `;
 
 export const highlightedSelectedElement = `
-	background-color: ${shadedGreen};
+	background-color: var(--color-green-600);
 	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.04);
 
 	@media (prefers-color-scheme: dark) {
+	background-color: var(--color-green-400);
 		box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.04);
-		background-color: #3ee86f;
 	}
 `;

@@ -53,7 +53,7 @@ export default function NthChild() {
 				<span className="hidden sm:inline-block">
 					{' {'}
 					<span
-						className="inline-block w-4 h-4 mx-1 rounded-sm bg-green-500 hover:bg-green-600"
+						className="inline-block w-4 h-4 mx-1 rounded-sm bg-green-500 hover:bg-green-600 dark:hover:bg-green-400"
 						onMouseEnter={handleMouseEnterSelectedBlockExample}
 						onMouseLeave={handleMouseLeaveSelectedBlockExample}
 					/>
