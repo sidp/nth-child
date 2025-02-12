@@ -5,7 +5,7 @@ class CustomDocument extends Document {
 		return (
 			<Html>
 				<Head />
-				<body className="bg-white dark:bg-black text-slate-900 dark:text-slate-100">
+				<body className="bg-white dark:bg-black text-gray-900 dark:text-gray-100">
 					<Main />
 					<NextScript />
 				</body>

@@ -137,11 +137,11 @@ export default class NthChild extends Component {
 	render() {
 		return (
 			<>
-				<div className="text-xl font-mono text-slate-500 mb-5">
+				<div className="text-xl font-mono text-gray-500 mb-5">
 					<label>
 						:nth-child(
 						<NumberInput
-							className=" border-2 border-slate-300 dark:border-slate-600 hover:border-slate-400 focus:border-blue-600 focus-visible:outline-none p-0 inline-block bg-transparent appearance-none text-slate dark:text-slate-100 size-xl text-center w-20 rounded-md"
+							className=" border-2 border-gray-300 dark:border-gray-600 hover:border-gray-400 focus:border-blue-600 focus-visible:outline-none p-0 inline-block bg-transparent appearance-none text-gray dark:text-gray-100 size-xl text-center w-20 rounded-md"
 							name="pattern"
 							value={this.state.pattern}
 							onChange={this.handleOnChange}

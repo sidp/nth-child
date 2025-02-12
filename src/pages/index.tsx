@@ -55,7 +55,7 @@ export default function Index() {
 					.
 				</p>
 				<NthChild />
-				<footer className="text-sm mt-8 pt-3 border-t-2 border-slate-200 dark:border-slate-700 flex justify-between">
+				<footer className="text-sm mt-8 pt-3 border-t-2 border-gray-200 dark:border-gray-700 flex justify-between">
 					<div>
 						Source code on{' '}
 						<ExternalLink
