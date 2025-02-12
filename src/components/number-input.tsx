@@ -1,11 +1,8 @@
-import React from 'react';
-import { hasNumberAt, changeNumberAt } from '../utils/numbers';
+import { ChangeEvent, HTMLAttributes, KeyboardEvent } from 'react';
 import { flushSync } from 'react-dom';
+import { changeNumberAt, hasNumberAt } from '../utils/numbers';
 
-type NumberInputAttributes = Omit<
-	React.HTMLAttributes<HTMLInputElement>,
-	'onChange'
->;
+type NumberInputAttributes = Omit<HTMLAttributes<HTMLInputElement>, 'onChange'>;
 
 type NumberInputProps = NumberInputAttributes & {
 	name: string;
@@ -13,12 +10,12 @@ type NumberInputProps = NumberInputAttributes & {
 	onChange: (value: string, callback?: () => void) => void;
 };
 
-export default function NumberInput({
+export function NumberInput({
 	value = '',
 	onChange,
 	...props
 }: NumberInputProps) {
-	const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+	const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
 		if (!(event.target instanceof HTMLInputElement)) return;
 
 		// When up or down is pressed
@@ -68,7 +65,7 @@ export default function NumberInput({
 		}
 	};
 
-	const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
 		if (!(ev.target instanceof HTMLInputElement)) return;
 		onChange(ev.target.value);
 	};

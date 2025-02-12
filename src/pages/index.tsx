@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import NthChild from '../components/nth-child';
-import ExternalLink from '../components/external-link';
+import { NthChild } from '../components/nth-child';
+import { ExternalLink } from '../components/external-link';
 
 export default function Index() {
 	const router = useRouter();

@@ -1,13 +1,13 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 type ExternalLinksProps = React.HTMLProps<HTMLAnchorElement> & {
 	children: ReactNode;
 };
 
-const ExternalLink: FC<ExternalLinksProps> = ({ children, ...props }) => (
-	<a {...props} className="text-blue-600 dark:text-blue-400 underline">
-		{children}
-	</a>
-);
-
-export default ExternalLink;
+export function ExternalLink({ children, ...props }: ExternalLinksProps) {
+	return (
+		<a {...props} className="text-blue-600 dark:text-blue-400 underline">
+			{children}
+		</a>
+	);
+}

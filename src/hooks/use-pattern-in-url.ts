@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const DEFAULT_PATTERN = '3n+1';
 // Characters that are not useful in a nth-child pattern

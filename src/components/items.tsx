@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import React, { FC } from 'react';
 
-import { selectedElement, highlightedSelectedElement } from '../utils/styles';
+import { highlightedSelectedElement, selectedElement } from '../utils/styles';
 
 // Match characters that override the styling of the page itself
 const FORBIDDEN_CHARS_REGEX = /[\\[\]]/g;
@@ -15,11 +14,11 @@ type ItemsProps = {
 	highlightSelected: boolean;
 };
 
-const Items: FC<ItemsProps> = ({
+export function Items({
 	numberOfItems = 10,
 	pattern = '',
 	highlightSelected = false,
-}) => {
+}: ItemsProps) {
 	const items = Array(numberOfItems)
 		.fill('')
 		.map((_, i) => (
@@ -46,6 +45,4 @@ const Items: FC<ItemsProps> = ({
 			<ul className="nth-child-list">{items}</ul>
 		</>
 	);
-};
-
-export default Items;
+}

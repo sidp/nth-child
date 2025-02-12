@@ -1,4 +1,4 @@
-import { green, lightGray, gray } from './styles';
+import { gray, green, lightGray } from './styles';
 
 export default function favicon(pattern: string) {
 	const matches = (i: number) => isMatched(pattern, i);

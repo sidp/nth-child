@@ -1,16 +1,15 @@
-import React, { FC, ReactNode, useState, useRef } from 'react';
-
-import NumberInput from './number-input';
-import Items from './items';
-import LinkButton from './link-button';
-import { usePatternInUrl } from '../hooks/use-pattern-in-url';
+import { FC, ReactNode, useRef, useState } from 'react';
 import { usePatternFavicon } from '../hooks/use-pattern-favicon';
+import { usePatternInUrl } from '../hooks/use-pattern-in-url';
+import { Items } from './items';
+import { LinkButton } from './link-button';
+import { NumberInput } from './number-input';
 
 function patternIncludesOf(pattern: string) {
 	return pattern.indexOf('of') !== -1;
 }
 
-export default function NthChild() {
+export function NthChild() {
 	const [pattern, setPattern] = usePatternInUrl();
 	const [highlightSelected, setHighlightSelected] = useState(false);
 	const trackedEvent = useRef(false);
