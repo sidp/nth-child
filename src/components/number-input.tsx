@@ -54,7 +54,7 @@ export function NumberInput({
 				}
 
 				flushSync(() => {
-					onChange(changed.str);
+					onChange(changed.string);
 				});
 
 				event.target.setSelectionRange(

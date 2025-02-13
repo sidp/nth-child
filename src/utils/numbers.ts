@@ -18,15 +18,15 @@ export function hasNumberAt(str = '', pos = 0) {
 /**
  * Change the value of a number near a position in a string.
  */
-export function changeNumberAt(str: string, pos: number, increment = 0) {
-	if (!hasNumberAt(str, pos)) {
-		return false;
+export function changeNumberAt(string: string, pos: number, increment = 0) {
+	if (!hasNumberAt(string, pos)) {
+		return null;
 	}
 
-	const entities = stringToEntities(str);
+	const entities = stringToEntities(string);
 	const number = getNumberAt(entities, pos);
 	if (!number) {
-		return false;
+		return null;
 	}
 
 	const updatedNumber = updateNumber(number, (num) => num + increment);
@@ -41,7 +41,7 @@ export function changeNumberAt(str: string, pos: number, increment = 0) {
 	return {
 		selectionStartIndex: updatedNumber.selectionStartIndex,
 		selectionEndIndex: updatedNumber.selectionEndIndex,
-		str: entitiesToString(updatedEntities),
+		string: entitiesToString(updatedEntities),
 	};
 }
 
