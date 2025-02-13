@@ -6,6 +6,7 @@ const INVALID_CHARS_REGEX = /[()\\/<%€$]/g;
 
 export function usePatternInUrl() {
 	const [pattern, setPattern] = useState(DEFAULT_PATTERN);
+	const [hasPatternInUrl, setHasPatternInUrl] = useState(false);
 
 	/**
 	 * Set initial pattern from URL
@@ -14,6 +15,7 @@ export function usePatternInUrl() {
 		const patternFromUrl = getPatternFromLocation();
 		if (patternFromUrl) {
 			setPattern(patternFromUrl);
+			setHasPatternInUrl(true);
 		}
 	}, []);
 
@@ -21,14 +23,22 @@ export function usePatternInUrl() {
 	 * Update URL when pattern changes
 	 */
 	useEffect(() => {
+		if (!hasPatternInUrl) {
+			return;
+		}
+
 		const hash = allowedPattern(pattern)
 			? `#pattern:${cleanPattern(pattern)}`
 			: ' ';
 
 		window.history.replaceState(undefined, '', hash);
-	}, [pattern]);
+	}, [pattern, hasPatternInUrl]);
 
-	return [pattern, setPattern] as const;
+	const activatePatternInUrl = () => {
+		setHasPatternInUrl(true);
+	};
+
+	return [pattern, setPattern, hasPatternInUrl, activatePatternInUrl] as const;
 }
 
 function allowedPattern(pattern: string) {

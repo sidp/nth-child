@@ -10,7 +10,8 @@ function patternIncludesOf(pattern: string) {
 }
 
 export function NthChild() {
-	const [pattern, setPattern] = usePatternInUrl();
+	const [pattern, setPattern, hasPatternInUrl, activatePatternInUrl] =
+		usePatternInUrl();
 	const [highlightSelected, setHighlightSelected] = useState(false);
 	const trackedEvent = useRef(false);
 
@@ -27,13 +28,8 @@ export function NthChild() {
 		setFavicon(newPattern);
 	};
 
-	const handleMouseEnterSelectedBlockExample = () => {
-		setHighlightSelected(true);
-	};
-
-	const handleMouseLeaveSelectedBlockExample = () => {
-		setHighlightSelected(false);
-	};
+	const handleMouseEnterSelectedBlock = () => setHighlightSelected(true);
+	const handleMouseLeaveSelectedBlock = () => setHighlightSelected(false);
 
 	return (
 		<>
@@ -52,15 +48,20 @@ export function NthChild() {
 					{' {'}
 					<span
 						className="inline-block w-4 h-4 mx-1 rounded-sm bg-green-500 hover:bg-green-600 dark:hover:bg-green-400"
-						onMouseEnter={handleMouseEnterSelectedBlockExample}
-						onMouseLeave={handleMouseLeaveSelectedBlockExample}
+						onMouseEnter={handleMouseEnterSelectedBlock}
+						onMouseLeave={handleMouseLeaveSelectedBlock}
 					/>
 					{'}'}
 				</span>
 
-				<LinkButton className="float-right mt-1" onClick={() => {}}>
-					Make a URL for this pattern
-				</LinkButton>
+				{!hasPatternInUrl && (
+					<LinkButton
+						className="float-right mt-1"
+						onClick={activatePatternInUrl}
+					>
+						Make a URL for this pattern
+					</LinkButton>
+				)}
 			</div>
 			{patternIncludesOf(pattern) && (
 				<Notice>
