@@ -1,11 +1,18 @@
-import { isMatched } from './pattern';
+import { isMatched, isValid } from './pattern';
 import { gray, green, lightGray } from './styles';
 
 export function setFavicon(pattern: string) {
-	const icoEl = document.querySelector<HTMLLinkElement>(
-		'head link[rel="icon"][type="image/x-icon"]'
-	);
-	icoEl?.parentElement?.removeChild(icoEl);
+	const href = favicon(pattern);
+
+	if (!href) {
+		return;
+	}
+
+	document
+		.querySelector<HTMLLinkElement>(
+			'head link[rel="icon"][type="image/x-icon"]'
+		)
+		?.remove();
 
 	let iconEl = document.querySelector<HTMLLinkElement>(
 		'head link[rel="icon"][type="image/svg+xml"]'
@@ -15,14 +22,18 @@ export function setFavicon(pattern: string) {
 		iconEl = document.createElement('link');
 		iconEl.setAttribute('rel', 'icon');
 		iconEl.setAttribute('type', 'image/svg+xml');
-		iconEl.setAttribute('href', favicon(pattern));
+		iconEl.setAttribute('href', href);
 		document.head.appendChild(iconEl);
 	} else {
-		iconEl.setAttribute('href', favicon(pattern));
+		iconEl.setAttribute('href', href);
 	}
 }
 
 export function favicon(pattern: string) {
+	if (!isValid(pattern)) {
+		return null;
+	}
+
 	const matches = (i: number) => isMatched(pattern, i);
 
 	return `data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">

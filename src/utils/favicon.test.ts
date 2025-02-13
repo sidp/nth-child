@@ -7,6 +7,10 @@ describe('favicon', () => {
 		expect(favicon('3n+1')).toMatchSnapshot();
 		expect(favicon('6n-2')).toMatchSnapshot();
 	});
+
+	it('should return null for invalid pattern', () => {
+		expect(favicon('hello')).toBeNull();
+	});
 });
 
 describe('setFavicon', () => {
@@ -44,5 +48,39 @@ describe('setFavicon', () => {
 			'head link[rel="icon"][type="image/x-icon"]'
 		);
 		expect(icoElement).toBeNull();
+	});
+
+	it('should create a link element if it does not exist', () => {
+		document
+			.querySelector<HTMLLinkElement>(
+				'head link[rel="icon"][type="image/svg+xml"]'
+			)
+			?.remove();
+
+		setFavicon('3n+1');
+
+		expect(
+			document.querySelector<HTMLLinkElement>(
+				'head link[rel="icon"][type="image/svg+xml"]'
+			)
+		).not.toBeNull();
+	});
+
+	it('should not update favicon with invalid pattern', () => {
+		const prevHref = document
+			.querySelector<HTMLLinkElement>(
+				'head link[rel="icon"][type="image/svg+xml"]'
+			)
+			?.getAttribute('href');
+
+		setFavicon('hello');
+
+		expect(
+			document
+				.querySelector<HTMLLinkElement>(
+					'head link[rel="icon"][type="image/svg+xml"]'
+				)
+				?.getAttribute('href')
+		).toEqual(prevHref);
 	});
 });
