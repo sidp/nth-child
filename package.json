@@ -4,23 +4,35 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"build": "gatsby build",
-		"serve": "gatsby serve",
-		"develop": "gatsby develop",
-		"deploy": "yarn run build && rsync -avz --del public/ peter@simonsson.com:/var/www/nth-child.design"
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"format": "prettier --write src/*",
+		"test": "vitest",
+		"coverage": "vitest --coverage"
 	},
 	"dependencies": {
-		"babel-plugin-styled-components": "^1.11.1",
-		"gatsby": "^2.25.3",
-		"gatsby-link": "^2.4.16",
-		"gatsby-plugin-google-analytics": "^2.4.0",
-		"gatsby-plugin-styled-components": "^3.3.14",
-		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
-		"react-is": "^17.0.1",
-		"styled-components": "^5.2.1"
+		"next": "^15.1.7",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
 	},
 	"devDependencies": {
-		"prettier": "2.2.1"
-	}
+		"@tailwindcss/postcss": "^4.0.6",
+		"@testing-library/dom": "^10.4.0",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/react": "^16.2.0",
+		"@testing-library/user-event": "^14.6.1",
+		"@types/node": "^22.13.2",
+		"@types/react": "^19.0.8",
+		"@types/react-dom": "^19.0.3",
+		"@vitejs/plugin-react": "^4.3.4",
+		"@vitest/coverage-v8": "3.0.5",
+		"happy-dom": "^17.1.0",
+		"postcss": "^8.5.2",
+		"prettier": "2.7.1",
+		"tailwindcss": "^4.0.6",
+		"typescript": "^5.7.3",
+		"vitest": "^3.0.5"
+	},
+	"packageManager": "pnpm@9.15.5+sha512.845196026aab1cc3f098a0474b64dfbab2afe7a1b4e91dd86895d8e4aa32a7a6d03049e2d0ad770bbe4de023a7122fb68c1a1d6e0d033c7076085f9d5d4800d4"
 }

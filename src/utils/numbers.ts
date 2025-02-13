@@ -1,7 +1,7 @@
 /**
  * Numbers
  *
- * This file provides a couple of simple exported interface for manipulation
+ * This file provides a couple of simple exported interfaces for manipulation
  * of numbers in strings. Internally it turns the string into an array of
  * entities – representations of the string – that can more easily be processed
  * in the desired way.
@@ -18,15 +18,15 @@ export function hasNumberAt(str = '', pos = 0) {
 /**
  * Change the value of a number near a position in a string.
  */
-export function changeNumberAt(str, pos, increment = 0) {
-	if (!hasNumberAt(str, pos)) {
-		return false;
+export function changeNumberAt(string: string, pos: number, increment = 0) {
+	if (!hasNumberAt(string, pos)) {
+		return null;
 	}
 
-	const entities = stringToEntities(str);
+	const entities = stringToEntities(string);
 	const number = getNumberAt(entities, pos);
 	if (!number) {
-		return false;
+		return null;
 	}
 
 	const updatedNumber = updateNumber(number, (num) => num + increment);
@@ -41,7 +41,7 @@ export function changeNumberAt(str, pos, increment = 0) {
 	return {
 		selectionStartIndex: updatedNumber.selectionStartIndex,
 		selectionEndIndex: updatedNumber.selectionEndIndex,
-		str: entitiesToString(updatedEntities),
+		string: entitiesToString(updatedEntities),
 	};
 }
 
@@ -49,14 +49,40 @@ export function changeNumberAt(str, pos, increment = 0) {
  * PRIVATE FUNCTIONS
  */
 
-const TEXT_ENTITY = 'TEXT_ENTITY';
-const NUMBER_ENTITY = 'NUMBER_ENTITY';
+type UnknownEntity = {
+	value: string;
+	startIndex: number;
+	endIndex: number;
+};
+
+type EntityType = 'TEXT_ENTITY' | 'NUMBER_ENTITY';
+
+type BaseEntity = {
+	type: EntityType;
+	value: string;
+	startIndex: number;
+	endIndex: number;
+};
+
+type TextEntity = BaseEntity & {
+	type: 'TEXT_ENTITY';
+};
+
+type NumberEntity = BaseEntity & {
+	type: 'NUMBER_ENTITY';
+	number: number;
+};
+
+type Entity = TextEntity | NumberEntity;
 
 /**
  * Populates the startIndex and endIndex fields in the creation of
- * an entity.
+ * an entity. For use as Array.reduce function.
  */
-function countEntityPositions(entities, value) {
+function countEntityPositions(
+	entities: UnknownEntity[],
+	value: string
+): UnknownEntity[] {
 	let startIndex = 0;
 	if (entities.length > 0) {
 		startIndex = entities[entities.length - 1].endIndex;
@@ -75,21 +101,23 @@ function countEntityPositions(entities, value) {
  * Populates the type and (if applicable) number fields in the creation
  * of an entity.
  */
-function classifyEntity(entity) {
-	const updated = { type: TEXT_ENTITY };
+function classifyEntity(entity: UnknownEntity): Entity {
+	const isNumber = entity.value.match(/([+-]?[0-9]+)/) !== null;
 
-	if (entity.value.match(/([+-]?[0-9]+)/) !== null) {
-		updated.type = NUMBER_ENTITY;
-		updated.number = Number(entity.value);
+	if (isNumber) {
+		return {
+			...entity,
+			...{ type: 'NUMBER_ENTITY', number: Number(entity.value) },
+		};
 	}
 
-	return { ...entity, ...updated };
+	return { ...entity, ...{ type: 'TEXT_ENTITY' } };
 }
 
 /**
  * Parses a string into entities
  */
-function stringToEntities(str) {
+function stringToEntities(str: string): Entity[] {
 	const re = /([+-]?[0-9]+)|([^0-9+-]+)|([+-])/g;
 	const parts = str.match(re);
 
@@ -103,22 +131,22 @@ function stringToEntities(str) {
 /**
  * Turns an array of entities back into a string.
  */
-function entitiesToString(entities) {
+function entitiesToString(entities: Entity[]): string {
 	return entities.map((entity) => entity.value).join('');
 }
 
 /**
  * Check if the provided entity is a number entity.
  */
-function isNumberEntity(entity) {
-	return entity.type && entity.type === NUMBER_ENTITY;
+function isNumberEntity(entity: Entity): entity is NumberEntity {
+	return entity.type && entity.type === 'NUMBER_ENTITY';
 }
 
 /**
  * Get the number at a certain position in a string. Returns false if
  * no number is at the position.
  */
-function getNumberAt(entities, pos) {
+function getNumberAt(entities: Entity[], pos: number) {
 	const numbers = entities.filter(isNumberEntity);
 	const numbersAtPos = numbers.filter(
 		(entity) => pos >= entity.startIndex && pos <= entity.endIndex
@@ -130,7 +158,7 @@ function getNumberAt(entities, pos) {
 /**
  * Takes a string and checks if it begins with a mathematical symbol.
  */
-function startsWithMathSymbol(str) {
+function startsWithMathSymbol(str: string) {
 	return str.match(/^(\+|-)/) !== null;
 }
 
@@ -138,8 +166,20 @@ function startsWithMathSymbol(str) {
  * Takes a number entity and a function, and applies the function to the
  * value of the entity. While also keeping the index values updated.
  */
-function updateNumber(entity, update = (value) => {}) {
-	const updated = { ...entity };
+type UpdatedNumberEntity = NumberEntity & {
+	selectionStartIndex: number;
+	selectionEndIndex: number;
+};
+
+function updateNumber(
+	entity: NumberEntity,
+	update: (value: number) => number = (v) => v
+): UpdatedNumberEntity {
+	const updated: UpdatedNumberEntity = {
+		...entity,
+		selectionStartIndex: entity.startIndex,
+		selectionEndIndex: entity.endIndex,
+	};
 	updated.number = update(entity.number);
 
 	const hadPlusOrMinus = startsWithMathSymbol(entity.value);
