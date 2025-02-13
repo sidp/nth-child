@@ -38,7 +38,18 @@ export function usePatternInUrl() {
 		setHasPatternInUrl(true);
 	};
 
-	return [pattern, setPattern, hasPatternInUrl, activatePatternInUrl] as const;
+	const resetPattern = () => {
+		setPattern(DEFAULT_PATTERN);
+		setHasPatternInUrl(false);
+	};
+
+	return {
+		pattern,
+		setPattern,
+		hasPatternInUrl,
+		activatePatternInUrl,
+		resetPattern,
+	} as const;
 }
 
 function allowedPattern(pattern: string) {

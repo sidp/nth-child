@@ -1,17 +1,22 @@
-import { FC, ReactNode, useRef, useState } from 'react';
+import { FC, FocusEventHandler, ReactNode, useRef, useState } from 'react';
 import { usePatternInUrl } from '../hooks/use-pattern-in-url';
+import { setFavicon } from '../utils/favicon';
 import { Items } from './items';
 import { LinkButton } from './link-button';
 import { NumberInput } from './number-input';
-import { setFavicon } from '../utils/favicon';
 
 function patternIncludesOf(pattern: string) {
 	return pattern.indexOf('of') !== -1;
 }
 
 export function NthChild() {
-	const [pattern, setPattern, hasPatternInUrl, activatePatternInUrl] =
-		usePatternInUrl();
+	const {
+		pattern,
+		setPattern,
+		hasPatternInUrl,
+		activatePatternInUrl,
+		resetPattern,
+	} = usePatternInUrl();
 	const [highlightSelected, setHighlightSelected] = useState(false);
 	const trackedEvent = useRef(false);
 
@@ -28,6 +33,15 @@ export function NthChild() {
 		setFavicon(newPattern);
 	};
 
+	const handleBlur: FocusEventHandler = (event) => {
+		if (
+			event.target instanceof HTMLInputElement &&
+			event.target.value.trim() === ''
+		) {
+			resetPattern();
+		}
+	};
+
 	const handleMouseEnterSelectedBlock = () => setHighlightSelected(true);
 	const handleMouseLeaveSelectedBlock = () => setHighlightSelected(false);
 
@@ -41,6 +55,7 @@ export function NthChild() {
 						name="pattern"
 						value={pattern}
 						onChange={handleChange}
+						onBlur={handleBlur}
 					/>
 					)
 				</label>
