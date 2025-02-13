@@ -33,11 +33,11 @@ export function NthChild() {
 
 	return (
 		<>
-			<div className="text-xl font-mono text-gray-500 mb-5">
+			<div className="text-xl font-mono text-gray-500 dark:text-gray-400 mb-5">
 				<label>
 					:nth-child(
 					<NumberInput
-						className=" border-2 border-gray-300 dark:border-gray-600 hover:border-gray-400 focus:border-blue-600 focus-visible:outline-none p-0 inline-block bg-transparent appearance-none text-gray dark:text-gray-100 size-xl text-center w-20 rounded-md"
+						className="border-2 border-gray-400 dark:border-gray-600 hover:border-gray-500 dark:hover:border-gray-500 focus:border-blue-600 dark:focus:border-blue-500 focus-visible:outline-none p-0 inline-block bg-transparent appearance-none text-gray-800 dark:text-gray-100 size-xl text-center w-20 rounded-md"
 						name="pattern"
 						value={pattern}
 						onChange={handleChange}
@@ -47,7 +47,7 @@ export function NthChild() {
 				<span className="hidden sm:inline-block">
 					{' {'}
 					<span
-						className="inline-block w-4 h-4 mx-1 rounded-sm bg-green-500 hover:bg-green-600 dark:hover:bg-green-400"
+						className="inline-block w-4 h-4 mx-1 align-[-2px] rounded-sm bg-green-500 hover:bg-green-600 dark:hover:bg-green-400 transition-colors"
 						onMouseEnter={handleMouseEnterSelectedBlock}
 						onMouseLeave={handleMouseLeaveSelectedBlock}
 					/>

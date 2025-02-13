@@ -2,9 +2,11 @@ import { HTMLAttributes } from 'react';
 
 type LinkButtonProps = HTMLAttributes<HTMLButtonElement>;
 
-export function LinkButton({ children, ...props }: LinkButtonProps) {
+export function LinkButton({ children, className, ...props }: LinkButtonProps) {
+	className = `${className || ''} group cursor-pointer`;
+
 	return (
-		<button className="group" {...props}>
+		<button className={className} {...props}>
 			<span className="sr-only">{children}</span>
 			<svg
 				width="24"
@@ -14,7 +16,7 @@ export function LinkButton({ children, ...props }: LinkButtonProps) {
 			>
 				<g
 					fill="none"
-					className="stroke-gray-500 group-hover:stroke-blue-600"
+					className="stroke-gray-500 dark:stroke-gray-400 group-hover:stroke-blue-600 dark:group-hover:stroke-blue-400"
 					strokeWidth="2"
 				>
 					<path d="M11.5 6.82l2.5-2.5c1.5-1.5 4-2 6 0s1.5 4.5 0 6l-4 4c-1.5 1.5-4.517 1.482-6 0-.667-.668-1-1.334-1-2" />

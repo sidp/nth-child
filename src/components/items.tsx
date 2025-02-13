@@ -24,7 +24,7 @@ export function Items({
 		.map((_, i) => (
 			<li
 				key={i}
-				className="rounded-xs bg-gray-200 dark:bg-gray-700 h-7 list-decimal list-item list-outside ml-8 mb-0.5"
+				className="rounded-xs bg-gray-200 dark:bg-gray-700 h-7 list-decimal list-item list-outside ml-8 mb-0.5 transition-colors"
 			/>
 		));
 
