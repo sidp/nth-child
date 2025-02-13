@@ -22,7 +22,7 @@
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.2.0",
 		"@testing-library/user-event": "^14.6.1",
-		"@types/node": "^22.13.1",
+		"@types/node": "^22.13.2",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
 		"@vitejs/plugin-react": "^4.3.4",
@@ -34,5 +34,5 @@
 		"typescript": "^5.7.3",
 		"vitest": "^3.0.5"
 	},
-	"packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
+	"packageManager": "pnpm@9.15.5+sha512.845196026aab1cc3f098a0474b64dfbab2afe7a1b4e91dd86895d8e4aa32a7a6d03049e2d0ad770bbe4de023a7122fb68c1a1d6e0d033c7076085f9d5d4800d4"
 }
