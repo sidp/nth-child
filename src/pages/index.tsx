@@ -17,11 +17,6 @@ export default function Index() {
 		<>
 			<Head>
 				<title>How to use nth-child</title>
-				<link
-					rel="icon"
-					type="image/svg+xml"
-					href={'/assets/images/favicon.svg'}
-				/>
 				<meta name="description" content={description} />
 				<meta property="og:title" content={title} />
 				<meta

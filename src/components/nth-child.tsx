@@ -1,9 +1,9 @@
 import { FC, ReactNode, useRef, useState } from 'react';
-import { usePatternFavicon } from '../hooks/use-pattern-favicon';
 import { usePatternInUrl } from '../hooks/use-pattern-in-url';
 import { Items } from './items';
 import { LinkButton } from './link-button';
 import { NumberInput } from './number-input';
+import { setFavicon } from '../utils/favicon';
 
 function patternIncludesOf(pattern: string) {
 	return pattern.indexOf('of') !== -1;
@@ -14,9 +14,7 @@ export function NthChild() {
 	const [highlightSelected, setHighlightSelected] = useState(false);
 	const trackedEvent = useRef(false);
 
-	usePatternFavicon(pattern);
-
-	const handleChange = (pattern: string) => {
+	const handleChange = (newPattern: string) => {
 		if (
 			typeof window.plausible === 'function' &&
 			trackedEvent.current === false
@@ -25,7 +23,8 @@ export function NthChild() {
 			trackedEvent.current = true;
 		}
 
-		setPattern(pattern);
+		setPattern(newPattern);
+		setFavicon(newPattern);
 	};
 
 	const handleMouseEnterSelectedBlockExample = () => {

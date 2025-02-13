@@ -14,6 +14,11 @@ class CustomDocument extends Document {
 					<Script id="plausible-function">
 						{`window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`}
 					</Script>
+					<link
+						rel="icon"
+						type="image/svg+xml"
+						href={'/assets/images/favicon.svg'}
+					/>
 				</Head>
 				<body className="bg-white dark:bg-black text-gray-900 dark:text-gray-100">
 					<Main />
