@@ -4,6 +4,7 @@ import { setFavicon } from '../utils/favicon';
 import { Items } from './items';
 import { LinkButton } from './link-button';
 import { NumberInput } from './number-input';
+import { isValid } from '../utils/pattern';
 
 function patternIncludesOf(pattern: string) {
 	return pattern.indexOf('of') !== -1;
@@ -78,10 +79,16 @@ export function NthChild() {
 					</LinkButton>
 				)}
 			</div>
-			{patternIncludesOf(pattern) && (
+			{pattern.length > 0 && !isValid(pattern) && (
 				<Notice>
-					This thing can unfortunately not show patterns using the{' '}
-					<code className="whitespace-pre">{'of <selector>'}</code> syntax.
+					{patternIncludesOf(pattern) ? (
+						<>
+							This thing can unfortunately not show patterns using the{' '}
+							<code className="whitespace-pre">{'of <selector>'}</code> syntax.
+						</>
+					) : (
+						<>The syntax of this pattern is not valid.</>
+					)}
 				</Notice>
 			)}
 			<Items
@@ -94,5 +101,7 @@ export function NthChild() {
 }
 
 const Notice: FC<{ children: ReactNode }> = ({ children }) => (
-	<p className="px-4 py-3 bg-yellow-100">{children}</p>
+	<p className="px-4 py-3 mb-8 text-yellow-950 bg-yellow-100 dark:text-yellow-100 dark:bg-yellow-950">
+		{children}
+	</p>
 );
