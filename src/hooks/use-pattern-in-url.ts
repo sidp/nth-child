@@ -27,9 +27,10 @@ export function usePatternInUrl() {
 			return;
 		}
 
-		const hash = allowedPattern(pattern)
-			? `#pattern:${cleanPattern(pattern)}`
-			: ' ';
+		const hash =
+			pattern && allowedPattern(pattern)
+				? `#pattern:${cleanPattern(pattern)}`
+				: ' ';
 
 		window.history.replaceState(undefined, '', hash);
 	}, [pattern, hasPatternInUrl]);
