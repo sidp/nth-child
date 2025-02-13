@@ -4,8 +4,8 @@ import { setFavicon } from '../utils/favicon';
 import { isValid } from '../utils/pattern';
 import { Items } from './items';
 import { LinkButton } from './link-button';
-import { NumberInput } from './number-input';
 import { DelayedNotice } from './notice';
+import { NumberInput } from './number-input';
 
 function patternIncludesOf(pattern: string) {
 	return pattern.indexOf('of') !== -1;

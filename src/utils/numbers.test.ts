@@ -17,6 +17,10 @@ describe('hasNumberAt', () => {
 	it('should return false if there is no number at the given position', () => {
 		expect(hasNumberAt('hello 123!', 2)).toBe(false);
 	});
+
+	it('should handle empty strings', () => {
+		expect(hasNumberAt('', 0)).toBe(false);
+	});
 });
 
 describe('changeNumberAt', () => {
@@ -70,6 +74,11 @@ describe('changeNumberAt', () => {
 		expect(result).toBeNull();
 		const result2 = changeNumberAt('hello 123!', 12, 1);
 		expect(result2).toBeNull();
+	});
+
+	it('should return null on empty strings', () => {
+		const result = changeNumberAt('', 0, 1);
+		expect(result).toBeNull();
 	});
 
 	it('should handle multiple consecutive numbers', () => {

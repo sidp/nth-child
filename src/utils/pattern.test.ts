@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isValid } from './pattern';
+import { cleanPattern, isMatched, isValid } from './pattern';
 
 describe('isValid', () => {
 	it('should return false if the pattern is empty', () => {
@@ -64,5 +64,83 @@ describe('isValid', () => {
 
 	it('should return true for patterns with leading zeros', () => {
 		expect(isValid('03n')).toBe(true);
+	});
+});
+
+describe('isMatched', () => {
+	it('should handle even pattern', () => {
+		expect(isMatched('even', 1)).toBe(false);
+		expect(isMatched('even', 2)).toBe(true);
+		expect(isMatched('even', 3)).toBe(false);
+	});
+
+	it('should handle odd pattern', () => {
+		expect(isMatched('odd', 1)).toBe(true);
+		expect(isMatched('odd', 2)).toBe(false);
+		expect(isMatched('odd', 3)).toBe(true);
+	});
+
+	it('should handle single number pattern', () => {
+		expect(isMatched('1', 1)).toBe(true);
+		expect(isMatched('1', 2)).toBe(false);
+		expect(isMatched('1', 3)).toBe(false);
+	});
+
+	it('should handle missing offset (1n)', () => {
+		expect(isMatched('1n', 1)).toBe(true);
+		expect(isMatched('1n', 2)).toBe(true);
+		expect(isMatched('1n', 3)).toBe(true);
+	});
+
+	it('should handle missing offset (2n)', () => {
+		expect(isMatched('2n', 1)).toBe(false);
+		expect(isMatched('2n', 2)).toBe(true);
+		expect(isMatched('2n', 3)).toBe(false);
+	});
+
+	it('should handle missing offset (3n)', () => {
+		expect(isMatched('3n', 1)).toBe(false);
+		expect(isMatched('3n', 2)).toBe(false);
+		expect(isMatched('3n', 3)).toBe(true);
+	});
+
+	it('should handle step size and offset', () => {
+		expect(isMatched('2n+1', 1)).toBe(true);
+		expect(isMatched('2n+1', 2)).toBe(false);
+		expect(isMatched('2n+1', 3)).toBe(true);
+	});
+
+	it('should handle step size with negative offset', () => {
+		expect(isMatched('2n-1', 1)).toBe(true);
+		expect(isMatched('2n-1', 2)).toBe(false);
+		expect(isMatched('2n-1', 3)).toBe(true);
+	});
+
+	it('should return false on invalid pattern', () => {
+		expect(isMatched('hello', 1)).toBe(false);
+	});
+
+	it('should return false on missing sign in offset', () => {
+		expect(isMatched('2n1', 1)).toBe(false);
+	});
+});
+
+describe('cleanPattern', () => {
+	it('should remove spaces', () => {
+		expect(cleanPattern('  3n+1  ')).toBe('3n+1');
+	});
+
+	it('should remove square brackets', () => {
+		expect(cleanPattern('[3n+1]')).toBe('3n+1');
+		expect(cleanPattern('3n+1[]')).toBe('3n+1');
+	});
+
+	it('should remove curly braces', () => {
+		expect(cleanPattern('{3n+1}')).toBe('3n+1');
+		expect(cleanPattern('3n+1{}')).toBe('3n+1');
+	});
+
+	it('should handle empty string', () => {
+		expect(cleanPattern('')).toBe('');
 	});
 });

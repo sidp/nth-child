@@ -82,3 +82,9 @@ export const isMatched = (pattern: string, i: number) => {
 	if (Number.isNaN(no)) return false;
 	return no === i;
 };
+
+// Match characters that override the styling of the page itself
+const FORBIDDEN_CHARS_REGEX = /[\[\]\{\}\.]/g;
+export function cleanPattern(pattern: string) {
+	return pattern.trim().replace(FORBIDDEN_CHARS_REGEX, '');
+}

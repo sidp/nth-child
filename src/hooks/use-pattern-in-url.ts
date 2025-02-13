@@ -32,7 +32,7 @@ export function usePatternInUrl() {
 				? `#pattern:${cleanPattern(pattern)}`
 				: ' ';
 
-		window.history.replaceState(undefined, '', hash);
+		window.history.replaceState({}, '', hash);
 	}, [pattern, hasPatternInUrl]);
 
 	const activatePatternInUrl = () => {

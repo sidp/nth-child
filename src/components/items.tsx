@@ -1,12 +1,7 @@
 import Head from 'next/head';
 
 import { highlightedSelectedElement, selectedElement } from '../utils/styles';
-
-// Match characters that override the styling of the page itself
-const FORBIDDEN_CHARS_REGEX = /[\\[\]]/g;
-function cleanPattern(pattern: string) {
-	return pattern.replace(FORBIDDEN_CHARS_REGEX, '');
-}
+import { cleanPattern } from '../utils/pattern';
 
 type ItemsProps = {
 	numberOfItems: number;
@@ -33,6 +28,8 @@ export function Items({
 		<>
 			<Head>
 				<style
+					id="nth-child-styles"
+					data-testid="nth-child-styles"
 					dangerouslySetInnerHTML={{
 						__html: `
 							.nth-child-list li:nth-child(${cleanedPattern}) {
