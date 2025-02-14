@@ -11,7 +11,7 @@ export default function Index() {
 		'The patterns of :nth-child() can sometimes be tricky to understand. Edit the selector to see how the selected elements change.';
 
 	const absoluteUrl = (path: string) =>
-		process.env.domain + router.basePath + path;
+		process.env.domain + '/' + router.basePath + path;
 
 	return (
 		<>
